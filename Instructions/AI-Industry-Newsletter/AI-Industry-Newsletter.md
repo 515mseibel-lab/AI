@@ -1,47 +1,55 @@
 <!--
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 COPY & PASTE PROMPT — PASTE INTO ANY LLM TO EXECUTE THIS WORKFLOW
+🤖 MANUS EXECUTION PROMPT — SAY: "Run the AI-Industry-Newsletter from my Git repository"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-You are an AI newsletter builder. Follow every instruction below precisely.
+You are Manus, an autonomous AI agent. When the user says "Run the AI-Industry-Newsletter
+from my Git repository", execute the following steps precisely and completely.
 
-INSTRUCTIONS FOLDER LOCATION: [PASTE YOUR INSTRUCTIONS FOLDER PATH HERE]
-  Example: Markdown\AI_SIGNAL_NEWSLETTER
+GITHUB REPOSITORY: 515mseibel-lab/AI
 
 STEP 1 — LOAD INSTRUCTIONS
-  Open the Instructions Folder at the path above.
+  Clone or pull the latest version of the repository: 515mseibel-lab/AI
+  Navigate to the Instructions folder:
+    GitHub Path: 515mseibel-lab/AI / Instructions / AI-Industry-Newsletter /
+    Direct URL:  https://github.com/515mseibel-lab/AI/tree/main/Instructions/AI-Industry-Newsletter
   Find the NEWEST markdown (.md) file in that folder (sort by date modified, take the most recent one).
   Load ALL instructions, source libraries, rating methodology, and formatting rules from that file.
-  This tracker file is your single source of truth — follow it completely.
+  This file is your single source of truth — follow it completely.
 
 STEP 2 — REVIEW PAST NEWSLETTERS (DEDUPLICATION CHECK)
-  Open the Newsletters Folder located at: AI\SIGNAL_NEWSLETTER
-  Load the 10 most recent newsletter files (sort by date, newest first).
+  Navigate to the Newsletters folder:
+    GitHub Path: 515mseibel-lab/AI / Newsletters / AI-Industry /
+    Direct URL:  https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry
+  Load the 10 most recent newsletter files (sort by filename/date, newest first).
   Catalog every article topic, story, and subject covered across those 10 editions.
   You will use this catalog to avoid repetition in the new edition.
 
 STEP 3 — BUILD THE NEW NEWSLETTER EDITION
   Research and select stories for this week's edition following the source tiers,
-  signal spectrum rating system, and editorial standards defined in the tracker file.
+  signal spectrum rating system, and editorial standards defined in this file.
   DEDUPLICATION RULE: Do NOT cover any topic already covered in the last 10 newsletters
   UNLESS there is meaningful new information. If new information exists on a previously
   covered topic, you MAY include it — but you MUST combine new facts with brief prior
   context to orient the reader, and clearly label it as a follow-up story.
-  Format the newsletter exactly as specified in the tracker file.
+  Format the newsletter exactly as specified in this file.
 
 STEP 4 — OUTPUT FORMAT (REQUIRED)
-  Build the newsletter in the following format, in order of preference:
-    1. PDF (preferred — use a clean, readable layout with the AI Signal branding)
-    2. Word Document (.docx) — if PDF is not possible
-    3. Google Doc — if neither PDF nor Word is available
-  The newsletter must be a downloadable, fully formatted file — NOT raw markdown pasted as text.
+  Build the newsletter as a downloadable, fully formatted PDF file.
+  Use clean, readable layout with AI Signal branding.
+  The newsletter must be a downloadable file — NOT raw markdown pasted as text.
+  Filename format: AI_Signal_Edition_###_YYYY-MM-DD.pdf
+  Example: AI_Signal_Edition_002_2026-03-20.pdf
 
-STEP 5 — SAVE THE NEWSLETTER
-  Save the completed newsletter file into the Newsletters Folder: AI\SIGNAL_NEWSLETTER
-  Use a clear filename format, e.g.: AI_Signal_Edition_###_YYYY-MM-DD.pdf
+STEP 5 — SAVE THE NEWSLETTER TO GITHUB
+  Commit and push the completed newsletter PDF into the Newsletters folder:
+    GitHub Path: 515mseibel-lab/AI / Newsletters / AI-Industry /
+    Direct URL:  https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry
+  Use the filename format: AI_Signal_Edition_###_YYYY-MM-DD.pdf
+  Commit message: "Add AI Signal Edition ### — YYYY-MM-DD"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-END OF COPY & PASTE PROMPT
+END OF MANUS EXECUTION PROMPT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
@@ -50,12 +58,12 @@ END OF COPY & PASTE PROMPT
 
 ---
 
-## 📁 FOLDER LOCATIONS
+## 📁 GITHUB REPOSITORY LOCATIONS
 
-| Folder | Path |
-|--------|------|
-| **Instructions Folder** (this tracker & editorial rules) | `Markdown\AI_SIGNAL_NEWSLETTER` |
-| **Newsletters Folder** (completed published editions) | `AI\SIGNAL_NEWSLETTER` |
+| Folder | GitHub Path | Direct URL |
+|--------|-------------|------------|
+| **Instructions Folder** (this tracker & editorial rules) | `515mseibel-lab/AI / Instructions / AI-Industry-Newsletter` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Instructions/AI-Industry-Newsletter) |
+| **Newsletter Location** (completed published editions) | `515mseibel-lab/AI / Newsletters / AI-Industry` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) |
 
 ---
 
@@ -64,27 +72,33 @@ END OF COPY & PASTE PROMPT
 > These rules govern how every edition of AI Signal is produced. Follow them in order.
 
 ### 1. Always Use the Newest Instructions File
-When building a new newsletter edition, open the **Instructions Folder** (`Markdown\AI_SIGNAL_NEWSLETTER`) and sort files by date modified. **Use only the newest markdown file** as your instruction source. Ignore older versions.
+When building a new newsletter edition, clone or pull the repository `515mseibel-lab/AI` and open the **Instructions Folder** at `Instructions/AI-Industry-Newsletter`. Sort files by date modified. **Use only the newest markdown file** as your instruction source. Ignore older versions.
 
 ### 2. Deduplication — Check the Last 10 Newsletters
-Before selecting stories, open the **Newsletters Folder** (`AI\SIGNAL_NEWSLETTER`) and review the **10 most recent editions**.
+Before selecting stories, open the **Newsletter Location** at `Newsletters/AI-Industry` and review the **10 most recent editions**.
 - **Do NOT repeat any article topic** already covered in those 10 editions — unless there is meaningful new information on that topic.
 - **If new information exists** on a previously covered topic, you MAY revisit it. Combine the new information with brief prior context to give readers continuity. Clearly label it as a follow-up (e.g., *"🔄 Follow-Up: [Original Story Title]"*).
 - Build a quick internal catalog of covered topics before choosing new stories to avoid accidental repetition.
 
-### 3. Output Format — Downloadable File Required
-Every newsletter edition **must be delivered as a downloadable, fully formatted file** — not raw markdown or plain text. Build in this order of preference:
+### 3. Output Format — Downloadable PDF Required
+Every newsletter edition **must be delivered as a downloadable, fully formatted PDF file** — not raw markdown or plain text.
 
 | Priority | Format | Notes |
 |----------|--------|-------|
 | ✅ **1st choice** | **PDF** | Preferred — clean layout, universally readable, preserves formatting |
 | 🔵 **2nd choice** | **Word Document (.docx)** | Use if PDF generation is not available |
-| 🟢 **3rd choice** | **Google Doc** | Use if neither PDF nor Word is possible |
+| 🟢 **3rd choice** | **Markdown (.md)** | Use if neither PDF nor Word is possible |
 
-### 4. Save to the Newsletters Folder
-After building the newsletter, **save the completed file** into the Newsletters Folder: `AI\SIGNAL_NEWSLETTER`
+### 4. Save to the Newsletter Location on GitHub
+After building the newsletter, **commit and push the completed file** into the Newsletter Location:
 
-Recommended filename format:
+```
+Repository:  515mseibel-lab/AI
+Folder Path: Newsletters/AI-Industry/
+GitHub URL:  https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry
+```
+
+Filename format:
 ```
 AI_Signal_Edition_###_YYYY-MM-DD.pdf
 ```
@@ -185,7 +199,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Sundar Pichai on X | @sundarpichai | CEO-level announcements |
 | Demis Hassabis on X | @demishassabis | DeepMind CEO — research milestone commentary |
 
-> **Model Family (as of March 2026):** Gemini 3.1 Pro (flagship), Gemini 3.1 Flash (fast tier), Gemini 3.1 Flash Lite (lightweight, developer-facing). Gemini Deep Think is the scientific reasoning variant. Gemini 2.5 Flash Image / Nano Banana is the image generation line. Powers Google Search AI Mode, Workspace, Android.
+> **Model Family (as of March 2026):** Gemini 3.1 Pro (flagship), Gemini 3.1 Flash (fast tier), Gemini 3.1 Flash Lite (lightweight, developer-facing). Gemini Deep Think is the scientific reasoning variant.
 
 #### xAI / Grok
 | Source | URL | What It Covers |
@@ -356,7 +370,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Eye on AI (Fortune) | fortune.com/newsletters/eye-on-ai | Business AI impact | High — Jeremy Kahn & Sharon Goldman, specialist reporters |
 | Import AI (Jack Clark) | importai.substack.com | Research + policy | High — Anthropic co-founder; deep technical + policy read |
 | The Batch (Andrew Ng) | deeplearning.ai/the-batch | Research + education | High — technically rigorous; pro-AI framing to note |
-| Ben's Bites | bensbites.com | Daily AI news | Medium — fast aggregation; useful for story radar |
+| Ben's Bites | bensbites.com | Daily AI news | Medium — fast aggregation; useful for trend radar |
 | The Neuron | theneurondaily.com | Daily AI business | Medium — business-focused, accessible |
 | Last Week in AI | lastweekin.ai | Weekly research roundup | High — curated ML research digest |
 | Gradient Descent (MLOps) | mlops.community/newsletter | Technical/engineering | High — practitioner-focused, low hype |
@@ -487,11 +501,12 @@ These are the **official primary sources** for each major AI lab or product. Alw
 
 ## EDITION HISTORY
 
-| Edition | Date | Lead Story | Status |
-|---------|------|------------|--------|
-| 001 | March 13, 2026 | Anthropic vs. Pentagon | 🟢 Published |
+| Edition | Date | Lead Story | Newsletter Location | Status |
+|---------|------|------------|---------------------|--------|
+| 001 | March 13, 2026 | Anthropic vs. Pentagon | [Newsletters/AI-Industry](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) | 🟢 Published |
 
 ---
 
-*Last updated: March 13, 2026 | Version 3.0*
+*Last updated: March 13, 2026 | Version 4.0*
 *Maintainer: AI Signal Editorial*
+*Repository: [515mseibel-lab/AI](https://github.com/515mseibel-lab/AI)*
