@@ -44,7 +44,10 @@ STEP 5 — UPDATE THE WEB APP
     Manus project: ai-signal-newsletter (at /home/ubuntu/ai-signal-newsletter)
     Live URL: https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/
   To update it for a new edition:
-    a) Edit the data file: /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts
+    a) Edit the data file — it lives in TWO places that must be kept in sync:
+       - Manus project (used for building): /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts
+       - GitHub repo (source of record):    Newsletters/AI-Industry/newsletterData.ts
+       Always edit the Manus project file first, then copy it to the repo after building.
        - Update the edition object (number, date, editorNote)
        - Replace the stories array with the new edition's 5 stories
        - Replace the pipeline array with the new watch list
@@ -61,11 +64,14 @@ STEP 5 — UPDATE THE WEB APP
 
 STEP 6 — SAVE EVERYTHING TO GITHUB
   Commit and push all new files in one commit:
-    - Newsletters/AI-Industry/AI_Signal_Edition_###_YYYY-MM-DD.pdf
-    - Newsletters/AI-Industry/AI_Signal_Edition_###_YYYY-MM-DD.md
+    - Newsletters/AI-Industry/newsletterData.ts (updated source data file)
     - docs/Newsletters/AI_Signal/index.html (rebuilt web app)
     - docs/Newsletters/AI_Signal/assets/ (rebuilt assets)
   Commit message: "Add AI Signal Edition ### — YYYY-MM-DD"
+
+  NOTE: The newsletterData.ts in Newsletters/AI-Industry/ is the canonical source of record.
+  After building, copy it there: cp /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts \
+    ~/AI-Industry-Newsletter/Newsletters/AI-Industry/newsletterData.ts
   Also update the STORY LOG and EDITION HISTORY sections of this instructions file
   and commit that too.
 
@@ -92,7 +98,7 @@ END OF MANUS EXECUTION PROMPT
 | Folder | GitHub Path | Direct URL |
 |--------|-------------|------------|
 | **Instructions** (this file) | `515mseibel-lab/AI / Instructions / AI-Industry-Newsletter` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Instructions/AI-Industry-Newsletter) |
-| **Newsletter Archive** (PDF + Markdown editions) | `515mseibel-lab/AI / Newsletters / AI-Industry` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) |
+| **Newsletter Archive** (source data + editions) | `515mseibel-lab/AI / Newsletters / AI-Industry` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) |
 | **Live Web App** (GitHub Pages) | `515mseibel-lab/AI / docs / Newsletters / AI_Signal` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/docs/Newsletters/AI_Signal) |
 | **Live Public URL** | GitHub Pages | [https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/](https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/) |
 
@@ -117,9 +123,8 @@ Every edition produces three outputs, all committed to GitHub in the same commit
 
 | Priority | Format | Location | Filename |
 |----------|--------|----------|----------|
-| ✅ **1** | **PDF** | `Newsletters/AI-Industry/` | `AI_Signal_Edition_###_YYYY-MM-DD.pdf` |
-| ✅ **2** | **Markdown (.md)** | `Newsletters/AI-Industry/` | `AI_Signal_Edition_###_YYYY-MM-DD.md` |
-| ✅ **3** | **Web App update** | `docs/Newsletters/AI_Signal/` | Rebuilt React static site (see Step 5 above) |
+| ✅ **1** | **Web App update** | `docs/Newsletters/AI_Signal/` | Rebuilt React static site (see Step 5 above) |
+| ✅ **2** | **Source data file** | `Newsletters/AI-Industry/` | `newsletterData.ts` (updated in place each edition) |
 
 ### 4. Web App Architecture
 
