@@ -39,7 +39,8 @@ export interface PipelineItem {
 
 export interface EditionHistoryItem {
   edition: string;
-  date: string;
+  date: string;          // Human-readable, e.g. "March 13, 2026"
+  isoDate: string;       // ISO format for sorting, e.g. "2026-03-13"
   leadStory: string;
   status: 'published' | 'current';
 }
@@ -224,6 +225,6 @@ export const pipeline: PipelineItem[] = [
 ];
 
 export const editionHistory: EditionHistoryItem[] = [
-  { edition: '001', date: 'March 13, 2026', leadStory: 'Anthropic vs. Pentagon (initial filing)', status: 'published' },
-  { edition: '002', date: 'March 13, 2026', leadStory: 'Anthropic Follow-Up + NVIDIA GTC + ByteDance', status: 'current' },
+  { edition: '001', date: 'March 13, 2026', isoDate: '2026-03-13', leadStory: 'Anthropic vs. Pentagon (initial filing)', status: 'published' },
+  { edition: '002', date: 'March 13, 2026', isoDate: '2026-03-13', leadStory: 'Anthropic Follow-Up + NVIDIA GTC + ByteDance', status: 'current' },
 ];
