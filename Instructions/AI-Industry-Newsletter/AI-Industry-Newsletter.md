@@ -25,28 +25,57 @@ STEP 2 — REVIEW PAST NEWSLETTERS (DEDUPLICATION CHECK)
   Catalog every article topic, story, and subject covered across those 10 editions.
   You will use this catalog to avoid repetition in the new edition.
 
-STEP 3 — BUILD THE NEW NEWSLETTER EDITION
+STEP 3 — RESEARCH AND BUILD THE NEW EDITION
   Research and select stories for this week's edition following the source tiers,
   signal spectrum rating system, and editorial standards defined in this file.
   DEDUPLICATION RULE: Do NOT cover any topic already covered in the last 10 newsletters
   UNLESS there is meaningful new information. If new information exists on a previously
-  covered topic, you MAY include it — but you MUST combine new facts with brief prior
-  context to orient the reader, and clearly label it as a follow-up story.
-  Format the newsletter exactly as specified in this file.
+  covered topic, you MAY include it — label it as a follow-up story.
+  Target: 5 stories per edition.
 
-STEP 4 — OUTPUT FORMAT (REQUIRED)
-  Build the newsletter as a downloadable, fully formatted PDF file.
-  Use clean, readable layout with AI Signal branding.
-  The newsletter must be a downloadable file — NOT raw markdown pasted as text.
-  Filename format: AI_Signal_Edition_###_YYYY-MM-DD.pdf
-  Example: AI_Signal_Edition_002_2026-03-20.pdf
+STEP 4 — BUILD ALL THREE OUTPUT FORMATS
+  Build the newsletter in all three formats (see OUTPUT FORMAT section below):
+    a) PDF  → saved to Newsletters/AI-Industry/
+    b) Markdown (.md) → saved to Newsletters/AI-Industry/
+    c) Web app update → update the React data file and rebuild the static site
 
-STEP 5 — SAVE THE NEWSLETTER TO GITHUB
-  Commit and push the completed newsletter PDF into the Newsletters folder:
-    GitHub Path: 515mseibel-lab/AI / Newsletters / AI-Industry /
-    Direct URL:  https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry
-  Use the filename format: AI_Signal_Edition_###_YYYY-MM-DD.pdf
+STEP 5 — UPDATE THE WEB APP
+  The live interactive newsletter web app lives at:
+    Manus project: ai-signal-newsletter (at /home/ubuntu/ai-signal-newsletter)
+    Live URL: https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/
+  To update it for a new edition:
+    a) Edit the data file: /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts
+       - Update the edition object (number, date, editorNote)
+       - Replace the stories array with the new edition's 5 stories
+       - Replace the pipeline array with the new watch list
+       - Add the new edition to the editionHistory array
+    b) Run: cd /home/ubuntu/ai-signal-newsletter && pnpm build
+    c) Copy build output to the AI repo:
+       rm -rf ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/assets
+       rm -f ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/index.html
+       rm -f ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/404.html
+       cp -r /home/ubuntu/ai-signal-newsletter/dist/public/. ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/
+       rm -rf ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/__manus__
+    d) The 404.html SPA redirect and docs/index.html root redirect are already in place —
+       do NOT delete them. Only replace index.html and assets/ inside AI_Signal/.
+
+STEP 6 — SAVE EVERYTHING TO GITHUB
+  Commit and push all new files in one commit:
+    - Newsletters/AI-Industry/AI_Signal_Edition_###_YYYY-MM-DD.pdf
+    - Newsletters/AI-Industry/AI_Signal_Edition_###_YYYY-MM-DD.md
+    - docs/Newsletters/AI_Signal/index.html (rebuilt web app)
+    - docs/Newsletters/AI_Signal/assets/ (rebuilt assets)
   Commit message: "Add AI Signal Edition ### — YYYY-MM-DD"
+  Also update the STORY LOG and EDITION HISTORY sections of this instructions file
+  and commit that too.
+
+STEP 7 — UPDATE THIS INSTRUCTIONS FILE
+  After each edition, update:
+    - The STORY LOG section: add a new entry for the edition just published
+    - The FUTURE STORY PIPELINE table: mark resolved items, add new watch items
+    - The EDITION HISTORY table: add the new edition row
+    - The "Last updated" line at the bottom of this file
+  Commit message: "Update instructions: add Edition ### story log and pipeline"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 END OF MANUS EXECUTION PROMPT
@@ -62,8 +91,10 @@ END OF MANUS EXECUTION PROMPT
 
 | Folder | GitHub Path | Direct URL |
 |--------|-------------|------------|
-| **Instructions Folder** (this tracker & editorial rules) | `515mseibel-lab/AI / Instructions / AI-Industry-Newsletter` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Instructions/AI-Industry-Newsletter) |
-| **Newsletter Location** (completed published editions) | `515mseibel-lab/AI / Newsletters / AI-Industry` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) |
+| **Instructions** (this file) | `515mseibel-lab/AI / Instructions / AI-Industry-Newsletter` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Instructions/AI-Industry-Newsletter) |
+| **Newsletter Archive** (PDF + Markdown editions) | `515mseibel-lab/AI / Newsletters / AI-Industry` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) |
+| **Live Web App** (GitHub Pages) | `515mseibel-lab/AI / docs / Newsletters / AI_Signal` | [View on GitHub](https://github.com/515mseibel-lab/AI/tree/main/docs/Newsletters/AI_Signal) |
+| **Live Public URL** | GitHub Pages | [https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/](https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/) |
 
 ---
 
@@ -75,34 +106,56 @@ END OF MANUS EXECUTION PROMPT
 When building a new newsletter edition, clone or pull the repository `515mseibel-lab/AI` and open the **Instructions Folder** at `Instructions/AI-Industry-Newsletter`. Sort files by date modified. **Use only the newest markdown file** as your instruction source. Ignore older versions.
 
 ### 2. Deduplication — Check the Last 10 Newsletters
-Before selecting stories, open the **Newsletter Location** at `Newsletters/AI-Industry` and review the **10 most recent editions**.
+Before selecting stories, open the **Newsletter Archive** at `Newsletters/AI-Industry` and review the **10 most recent editions**.
 - **Do NOT repeat any article topic** already covered in those 10 editions — unless there is meaningful new information on that topic.
 - **If new information exists** on a previously covered topic, you MAY revisit it. Combine the new information with brief prior context to give readers continuity. Clearly label it as a follow-up (e.g., *"🔄 Follow-Up: [Original Story Title]"*).
 - Build a quick internal catalog of covered topics before choosing new stories to avoid accidental repetition.
 
-### 3. Output Format — Downloadable PDF Required
-Every newsletter edition **must be delivered as a downloadable, fully formatted PDF file** — not raw markdown or plain text.
+### 3. Output Formats — Build All Three Every Edition
 
-| Priority | Format | Notes |
-|----------|--------|-------|
-| ✅ **1st choice** | **PDF** | Preferred — clean layout, universally readable, preserves formatting |
-| 🔵 **2nd choice** | **Word Document (.docx)** | Use if PDF generation is not available |
-| 🟢 **3rd choice** | **Markdown (.md)** | Use if neither PDF nor Word is possible |
+Every edition produces three outputs, all committed to GitHub in the same commit:
 
-### 4. Save to the Newsletter Location on GitHub
-After building the newsletter, **commit and push the completed file** into the Newsletter Location:
+| Priority | Format | Location | Filename |
+|----------|--------|----------|----------|
+| ✅ **1** | **PDF** | `Newsletters/AI-Industry/` | `AI_Signal_Edition_###_YYYY-MM-DD.pdf` |
+| ✅ **2** | **Markdown (.md)** | `Newsletters/AI-Industry/` | `AI_Signal_Edition_###_YYYY-MM-DD.md` |
+| ✅ **3** | **Web App update** | `docs/Newsletters/AI_Signal/` | Rebuilt React static site (see Step 5 above) |
+
+### 4. Web App Architecture
+
+The live interactive newsletter is a React + Tailwind static web app with the following structure:
 
 ```
-Repository:  515mseibel-lab/AI
-Folder Path: Newsletters/AI-Industry/
-GitHub URL:  https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry
+/home/ubuntu/ai-signal-newsletter/          ← Manus project root
+  client/src/lib/newsletterData.ts          ← ALL EDITION CONTENT LIVES HERE
+  client/src/pages/Home.tsx                 ← Main newsletter page (do not modify for content updates)
+  vite.config.ts                            ← base: '/AI/Newsletters/AI_Signal/' (do not change)
+  dist/public/                              ← Build output (generated by pnpm build)
+
+GitHub repo (AI):
+  docs/
+    index.html                              ← Root redirect (do not delete)
+    Newsletters/
+      AI_Signal/
+        index.html                          ← Built web app entry point
+        404.html                            ← SPA redirect (do not delete)
+        assets/
+          index-*.css
+          index-*.js
 ```
 
-Filename format:
-```
-AI_Signal_Edition_###_YYYY-MM-DD.pdf
-```
-Example: `AI_Signal_Edition_002_2026-03-20.pdf`
+**To update the web app for a new edition**, only edit `newsletterData.ts`. The data file exports:
+- `edition` — edition number, date, tagline, editor's note
+- `stories` — array of 5 story objects (see existing structure for schema)
+- `pipeline` — watch list items for the next edition
+- `editionHistory` — running log of all editions
+
+**Signal tier values** for the `signal` field: `'pure'` | `'grounded'` | `'mixed'` | `'speculative'` | `'hearsay'`
+
+**Tag type values** for story tags: `'conflict'` | `'missing'` | `'confirmed'` | `'hype'` | `'regulatory'` | `'peer-reviewed'` | `'source-interest'`
+
+### 5. GitHub Pages Setup (One-Time, Already Done)
+GitHub Pages is already enabled on the `515mseibel-lab/AI` repo, serving from `main` branch `/docs` folder. No further setup is needed. Every push to `docs/Newsletters/AI_Signal/` automatically updates the live URL within ~60 seconds.
 
 ---
 
@@ -186,7 +239,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Microsoft Learn / Docs | learn.microsoft.com | Technical documentation, admin guides, governance |
 | Microsoft 365 Roadmap | microsoft.com/en-us/microsoft-365/roadmap | Upcoming feature releases — requires careful "in preview" vs "GA" distinction |
 
-> **Model Architecture Note:** Microsoft 365 Copilot is **model-diverse by design** — not a single model. It runs OpenAI (GPT-5.3 Instant as of March 2026) and Anthropic (Claude available in mainline Copilot chat via the Frontier program). Copilot Cowork is specifically built in collaboration with Anthropic. Do not treat "Copilot" as synonymous with any single LLM.
+> **Model Architecture Note:** Microsoft 365 Copilot is **model-diverse by design** — not a single model. It runs OpenAI (GPT-5.3 Instant as of March 2026) and Anthropic (Claude available in mainline Copilot chat via the Frontier program). Copilot Cowork is specifically built in collaboration with Anthropic.
 
 #### Google / Gemini / DeepMind
 | Source | URL | What It Covers |
@@ -209,7 +262,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Elon Musk on X | @elonmusk | Owner/CEO commentary — high noise, occasional signal |
 | Grok Documentation | docs.x.ai | API documentation, model capabilities |
 
-> **Model Family (as of March 2026):** Grok 4.1 (flagship), Grok 4.20 (beta). Real-time X/Twitter data integration is Grok's defining differentiator. Deep integration with the X platform ecosystem.
+> **Model Family (as of March 2026):** Grok 4.1 (flagship), Grok 4.20 (beta). Real-time X/Twitter data integration is Grok's defining differentiator.
 
 #### Meta / Llama
 | Source | URL | What It Covers |
@@ -221,7 +274,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Mark Zuckerberg on X/Threads | @zuck | Strategic product direction, occasionally technical |
 | Hugging Face (Meta model cards) | huggingface.co/meta-llama | Model weights, documentation, community evals |
 
-> **Model Family (as of March 2026):** Llama 3.3 (70B, open-weights flagship), Llama 3.x family (7B–70B range). Perplexity's Sonar model is built on Llama 3.3 70B. Meta's strategy is open-weights release — all models are publicly downloadable.
+> **Model Family (as of March 2026):** Llama 3.3 (70B, open-weights flagship), Llama 3.x family (7B–70B range). Meta's strategy is open-weights release — all models are publicly downloadable.
 
 #### Mistral AI
 | Source | URL | What It Covers |
@@ -280,7 +333,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | NVIDIA Research | research.nvidia.com | Technical papers, Nemotron model family |
 | Jensen Huang on X | @Jensen_Huang | CEO commentary — treat as high-conviction promotional |
 
-> **Model Note:** NVIDIA's Nemotron 3 Super is their open-source model family for enterprise agentic AI. Available via Perplexity's Agent API. Vera Rubin is their next-gen AI hardware platform.
+> **Model Note:** NVIDIA's Nemotron 3 Super is their open-source model family for enterprise agentic AI. Available via Perplexity's Agent API. Vera Rubin is their next-gen AI hardware platform (debuting GTC 2026).
 
 #### DeepSeek (Chinese lab)
 | Source | URL | What It Covers |
@@ -289,7 +342,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Hugging Face (DeepSeek cards) | huggingface.co/deepseek-ai | Model weights, benchmarks |
 | DeepSeek API Docs | platform.deepseek.com | Developer access |
 
-> **Editorial Note:** DeepSeek R1 and V3 series caused significant industry disruption in early 2025 by matching frontier performance at dramatically lower cost. Perplexity previously used modified DeepSeek models transparently. Geopolitical context (Chinese lab, US export controls) is essential framing in any DeepSeek story.
+> **Editorial Note:** DeepSeek R1 and V3 series caused significant industry disruption in early 2025 by matching frontier performance at dramatically lower cost. Geopolitical context (Chinese lab, US export controls) is essential framing in any DeepSeek story.
 
 ---
 
@@ -325,7 +378,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | The Information | theinformation.com | Trade (paywall) | Inside access | Expensive but often gets internal details; paywalled |
 | IEEE Spectrum | spectrum.ieee.org | Technical | Engineering perspective | Reliable on technical claims; important for hardware and infrastructure stories |
 | Axios | axios.com | Newsletter | Deal-focused | Good on business deals and policy; deliberately brief — check original sources |
-| Protocol (archived) | protocol.com | Trade | Tech policy | Strong archive for 2020-2024 AI policy; no longer publishing |
+| Tom's Hardware | tomshardware.com | Hardware | Technical/specs | Best for GPU, chip, and data center hardware accuracy |
 
 ---
 
@@ -340,7 +393,7 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | CVPR Proceedings | openaccess.thecvf.com | Conference | Computer vision — relevant for multimodal AI |
 | Nature / Nature Machine Intelligence | nature.com/natmachintell | Journal | Peer-reviewed; slower but authoritative for empirical claims |
 | Science | science.org | Journal | Major AI breakthroughs occasionally published here |
-| BAIR Blog (UC Berkeley) | bair.berkeley.edu/blog | Academic | Computer vision, RL, NLP from a top AI lab; written for informed non-experts |
+| BAIR Blog (UC Berkeley) | bair.berkeley.edu/blog | Academic | Computer vision, RL, NLP from a top AI lab |
 | Stanford HAI Blog | hai.stanford.edu/news | Academic | Human-Centered AI Institute — strong on policy, ethics, workforce impact |
 | AI Now Institute | ainowinstitute.org | Think Tank | Critical AI research — labor, power, accountability |
 | Center for AI Safety | safe.ai | Think Tank | Safety research, risk assessments — note advocacy angle |
@@ -357,13 +410,12 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | EU AI Office | digital-strategy.ec.europa.eu | EU Government | EU AI Act implementation and enforcement |
 | UK AI Safety Institute | gov.uk/government/organisations/ai-safety-institute | UK Government | British AISI — international AI safety coordination |
 | FTC Technology Blog | ftc.gov/technology | U.S. Regulatory | Consumer protection and antitrust in AI |
-| Congressional Research Service | crs.gov | U.S. Government | Non-partisan policy analysis for Congress |
 | CNAS (Center for New American Security) | cnas.org | Think Tank | National security and AI policy — influential in DoD circles |
 | Carnegie Endowment | carnegieendowment.org | Think Tank | International AI governance and geopolitics |
 
 ---
 
-### TIER 5 — Newsletters and Curated Intelligence (High-Quality, Verify Primary Sources)
+### TIER 5 — Newsletters and Curated Intelligence
 
 | Source | URL / Access | Focus | Signal Quality |
 |--------|-------------|-------|---------------|
@@ -375,7 +427,6 @@ These are the **official primary sources** for each major AI lab or product. Alw
 | Last Week in AI | lastweekin.ai | Weekly research roundup | High — curated ML research digest |
 | Gradient Descent (MLOps) | mlops.community/newsletter | Technical/engineering | High — practitioner-focused, low hype |
 | Stratechery (Ben Thompson) | stratechery.com | Business strategy | High for framework; subscription-only; pro-technology framing |
-| Sequoia AI | sequoiacap.com/article-tag/ai | VC perspective | Useful for market framing; heavy VC interest to note |
 
 ---
 
@@ -422,40 +473,39 @@ These are the **official primary sources** for each major AI lab or product. Alw
 - Peer-reviewed backing for technical claims
 
 **5. Source Interest Check** — Ask:
-- Does the reporting outlet have financial exposure to the story? (e.g., VC-backed newsletter covering a portfolio company)
+- Does the reporting outlet have financial exposure to the story?
 - Is the primary source the company itself? (always flag 🏢)
 - Is the journalist embedded with access that might create incentive to soften coverage?
 
 ---
 
-## STORY LOG — EDITION 001 (March 13, 2026)
+## STORY LOG
 
-### Story 1: Anthropic vs. Pentagon
-- **Signal Rating:** 📶📶📶📶 Grounded
-- **Tags:** ⚖️ Source Conflict, 🕵️ Missing Context
-- **Sources Used:** MIT Tech Review, TechCrunch, CNN, NBC, The Intercept, Fox Business, CNBC, OpenAI Blog, Anthropic (via FT)
-- **Coverage Spread:** Wide — nearly every major tech and news outlet
-- **Notes:** Core facts verified. Contract language legitimately disputed by legal experts. Blindspot: Claude's reported use in Iran strikes hours post-ban is underreported.
+### Edition 001 — March 13, 2026
 
-### Story 2: OpenAI $730B Valuation / Amazon+Nvidia+SoftBank Raise
-- **Signal Rating:** 📶📶📶📶 Grounded
-- **Tags:** 🔥 Hype Alert, 🏢 Source Interest
-- **Notes:** Valuation is pre-money based on investor terms. "Pre-money" routinely omitted in headlines.
+| # | Story | Signal | Tags |
+|---|-------|--------|------|
+| 1 | Anthropic vs. Pentagon | 📶📶📶📶 Grounded | ⚖️ Source Conflict, 🕵️ Missing Context |
+| 2 | OpenAI $730B Valuation / Amazon+Nvidia+SoftBank Raise | 📶📶📶📶 Grounded | 🔥 Hype Alert, 🏢 Source Interest |
+| 3 | AI Job Displacement (Block cuts 4,000) | 📶📶📶 Mixed | 🔥 Hype Alert, 🕵️ Missing Context |
+| 4 | Perplexity "replaced $225K marketing stack" | 📶📶 Speculative | 🔥 Hype Alert, 🏢 Source Interest |
+| 5 | Apple Siri / Gemini Overhaul | 📶📶📶 Mixed | 🕵️ Missing Context |
 
-### Story 3: AI Job Displacement (Block cuts 4,000)
-- **Signal Rating:** 📶📶📶 Mixed
-- **Tags:** 🔥 Hype Alert, 🕵️ Missing Context
-- **Notes:** Layoff verified. AI causation is CEO framing, not independently verified.
+**Notes:** Core Anthropic/Pentagon facts verified. Valuation "pre-money" routinely omitted in headlines. Block layoff verified; AI causation is CEO framing. Perplexity case study is single vendor self-report. Apple has not issued primary source confirmation on all Siri/Gemini details.
 
-### Story 4: Perplexity "replaced $225K marketing stack"
-- **Signal Rating:** 📶📶 Speculative
-- **Tags:** 🔥 Hype Alert, 🏢 Source Interest
-- **Notes:** Single vendor case study from Perplexity's own marketing. Not independently verified.
+---
 
-### Story 5: Apple Siri / Gemini Overhaul
-- **Signal Rating:** 📶📶📶 Mixed
-- **Tags:** 🕵️ Missing Context
-- **Notes:** Apple has not issued primary source confirmation on all details. Treat aggregated reporting with caution until Apple official blog confirms.
+### Edition 002 — March 13, 2026
+
+| # | Story | Signal | Tags |
+|---|-------|--------|------|
+| 1 | Anthropic vs. Pentagon Follow-Up — Industry Unites | 📶📶📶📶 Grounded | ⚖️ Source Conflict, 🕵️ Missing Context, ✅ Independently Confirmed |
+| 2 | NVIDIA GTC 2026: Vera Rubin Debuts, NemoClaw Rumored | 📶📶📶 Mixed | 🔥 Hype Alert, 🕵️ Missing Context, 🏢 Source Interest |
+| 3 | ByteDance 36,000 Blackwell GPUs via Malaysia | 📶📶📶📶📶 Pure Signal | ✅ Independently Confirmed, 🏛️ Regulatory, 🕵️ Missing Context |
+| 4 | Anthropic Labor Study — AI Jobs Reality Check | 📶📶📶📶 Grounded | 🎓 Peer-Reviewed, 🏢 Source Interest, ⚖️ Source Conflict |
+| 5 | Morgan Stanley 'Intelligence Explosion' Report | 📶📶 Speculative | 🔥 Hype Alert, 🏢 Source Interest |
+
+**Notes:** Microsoft amicus brief confirmed by Reuters + The Hill. NemoClaw not officially confirmed by NVIDIA pre-GTC. ByteDance Malaysia arrangement confirmed by NVIDIA on-record statement. Anthropic study measures task exposure, not employment outcomes — Forbes critique valid. Morgan Stanley power grid analysis is independently supportable; AI capability framing is promotional.
 
 ---
 
@@ -463,15 +513,14 @@ These are the **official primary sources** for each major AI lab or product. Alw
 
 | Topic | Status | Priority | Key Sources to Watch |
 |-------|--------|----------|---------------------|
-| AI in Iran strikes — Claude use post-ban | 🔴 Under-reported | HIGH | The Intercept, MIT Tech Review, Pentagon |
-| Anthropic lawsuit outcome | 🟢 Developing | HIGH | CNN, CNBC, Court filings |
-| NVIDIA Vera Rubin architecture vs benchmark reality | 🟡 Watch | MEDIUM | IEEE Spectrum, ArXiv |
-| OpenAI GPT-5.4 "matched professionals 83%" — source? | 🔴 Verify | HIGH | OpenAI system card, independent evals |
-| AI job displacement: data vs. narrative | 🟡 Ongoing | HIGH | BLS data, AI Now Institute |
-| Perplexity "Computer" $225K claim — third-party test | 🔴 Needs verification | MEDIUM | Independent journalists |
-| EU AI Act enforcement timeline | 🟡 Watch | MEDIUM | EU AI Office, The Guardian |
-| DeepSeek V3.2 / Kimi K2 geopolitical framing | 🟡 Watch | MEDIUM | Reuters, Bloomberg, MIT Tech Review |
+| Claude use in Iran strikes post-ban | 🔴 Under-reported | HIGH | The Intercept, MIT Tech Review, Pentagon |
+| Vera Rubin benchmark reality vs. claims | 🟡 Watch (post-GTC) | HIGH | IEEE Spectrum, ArXiv, AnandTech |
+| Anthropic DOD lawsuit outcome | 🟢 Active | HIGH | Court filings, CNN, CNBC |
+| ByteDance Malaysia cluster — funding source | 🔴 Verify | MEDIUM | WSJ, BIS filings, Reuters |
+| GPT-5.4 GDPVal 83% — independent replication | 🔴 Verify | HIGH | OpenAI system card, ArXiv, HELM |
+| EU AI Act enforcement timeline 2026 | 🟡 Watch | MEDIUM | EU AI Office, The Guardian |
 | Microsoft Copilot Cowork (Claude-powered) launch | 🟢 Confirmed | HIGH | Microsoft 365 Blog, Anthropic Blog |
+| NemoClaw open-source agent platform (post-GTC) | 🟡 Watch | HIGH | NVIDIA Blog, Wired, CNBC |
 
 ---
 
@@ -501,12 +550,13 @@ These are the **official primary sources** for each major AI lab or product. Alw
 
 ## EDITION HISTORY
 
-| Edition | Date | Lead Story | Newsletter Location | Status |
-|---------|------|------------|---------------------|--------|
-| 001 | March 13, 2026 | Anthropic vs. Pentagon | [Newsletters/AI-Industry](https://github.com/515mseibel-lab/AI/tree/main/Newsletters/AI-Industry) | 🟢 Published |
+| Edition | Date | Lead Story | Formats | Status |
+|---------|------|------------|---------|--------|
+| 001 | March 13, 2026 | Anthropic vs. Pentagon | PDF, Markdown | 🟢 Published |
+| 002 | March 13, 2026 | Anthropic Follow-Up + NVIDIA GTC + ByteDance | PDF, Markdown, Web App | 🟢 Published |
 
 ---
 
-*Last updated: March 13, 2026 | Version 4.0*
+*Last updated: March 13, 2026 | Version 5.0*
 *Maintainer: AI Signal Editorial*
 *Repository: [515mseibel-lab/AI](https://github.com/515mseibel-lab/AI)*
