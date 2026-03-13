@@ -1,4 +1,4 @@
-// AI Signal Newsletter — Edition 002 Data
+// AI Signal Newsletter — Edition 003 Data
 // Design: Terminal Intelligence | Cyberpunk Editorial
 
 export type SignalTier = 'pure' | 'grounded' | 'mixed' | 'speculative' | 'hearsay';
@@ -64,51 +64,114 @@ export const TAG_STYLES: Record<Tag['type'], { color: string; bg: string; border
 };
 
 export const edition: { number: string; date: string; tagline: string; editorNote: string } = {
-  number: '002',
+  number: '003',
   date: 'March 13, 2026',
   tagline: 'Hearsay & Conjecture vs. Reality — Ground News for AI',
-  editorNote: `This week, the AI industry's collision with U.S. national security policy moved from background noise to front-page litigation. Anthropic's lawsuit against the Pentagon — and the industry-wide response it triggered — is the defining story of the week. Meanwhile, NVIDIA's GTC 2026 conference opens Monday with the Vera Rubin architecture expected to formally debut, ByteDance found a legal workaround to access frontier compute, and a new Anthropic labor study added nuance to the AI-jobs debate that most headlines are getting wrong. We also cover the Morgan Stanley 'intelligence explosion' report — and explain why you should read it with caution.`,
+  editorNote: `This week the AI industry's internal contradictions are on full display. Meta's third consecutive flagship model delay exposes the gap between $135 billion in capital commitments and actual frontier performance. OpenAI is integrating Sora into ChatGPT — a move that reads less like product strategy and more like a defensive response to Claude's surge. The Trump administration's AI executive order has set up a constitutional collision with 38 states that enacted their own AI laws in 2025. NVIDIA's GTC 2026 opens Monday with Vera Rubin's confirmed specs now public. And Sam Altman's "intelligence as utility" framing at the BlackRock Infrastructure Summit deserves a closer read than most outlets gave it.`,
 };
 
 export const stories: Story[] = [
   {
-    id: 'anthropic-pentagon',
+    id: 'meta-avocado-delay',
     number: 1,
-    type: 'FOLLOW-UP',
-    headline: 'Anthropic vs. Pentagon — The Industry Unites',
-    deck: 'Microsoft, OpenAI, and Google employees file amicus briefs as Anthropic\'s lawsuit escalates into a sector-wide confrontation with the Trump administration.',
+    headline: 'Meta\'s Avocado AI Model Delayed — The Third Consecutive Flagship Miss',
+    deck: 'Internal testing showed Avocado lagging behind GPT-5.4, Claude, and Gemini 3.1 Pro. Meta has now delayed three flagship models in a row while committing $135 billion in AI capex for 2026.',
+    signal: 'mixed',
+    signalLabel: 'Mixed',
+    signalBars: 3,
+    tags: [
+      { label: '🕵 Missing Context', type: 'missing' },
+      { label: '🔥 Hype Alert', type: 'hype' },
+      { label: '⚖ Source Conflict', type: 'conflict' },
+    ],
+    body: [
+      'Meta has postponed the release of its next-generation AI model, internally codenamed "Avocado," from its planned March debut to at least May 2026. According to The New York Times, citing multiple people with knowledge of the matter, internal assessments found Avocado lagging behind leading systems from OpenAI, Google, and Anthropic across reasoning, coding, and writing benchmarks.',
+      'This is the third consecutive delay of a Meta flagship AI model. Llama 4 was delayed after failing internal benchmarks; Behemoth was pushed back due to engineering challenges in achieving meaningful performance improvements. Following those setbacks, Meta reorganized its AI projects under a single division. Avocado was meant to be the product of that reorganization — a model that would reestablish Meta as a peer to frontier labs.',
+      'The stakes are significant. Meta has committed between $115 billion and $135 billion in capital expenditure for 2026, with a substantial portion directed at AI infrastructure. Despite this investment, the company has not produced a model that independently benchmarks as competitive with GPT-5.4 or Claude Opus 4.5. Internally, discussions have reportedly taken place about temporarily licensing a competitor\'s AI to power some Meta products while Avocado development continues — an extraordinary admission for a company that has staked its AI strategy on open-weights self-sufficiency. The company is already looking beyond Avocado to a successor reportedly named "Watermelon."',
+    ],
+    callouts: [
+      {
+        type: 'warning',
+        title: 'Signal note',
+        body: 'All sourcing on this story is anonymous. The New York Times has a strong track record on Meta internal reporting, and Reuters independently confirmed the delay, but neither Meta nor any named executive has commented on the record. The performance gap claims — specifically that Avocado "lags behind" competitors — are based on internal benchmark results that have not been publicly disclosed.',
+      },
+      {
+        type: 'conflict',
+        title: 'The missing context',
+        body: 'Meta\'s open-weights strategy is not just about frontier performance — it\'s about ecosystem control and enterprise adoption. Even a model that benchmarks below GPT-5.4 could be commercially significant if it\'s open-source and deployable on-premise. Most coverage of this delay frames it purely as a competitive loss without addressing this strategic dimension.',
+      },
+    ],
+    sources: 'The New York Times (primary, anonymous sources), Reuters, Barron\'s, CNET, IndexBox Market Intelligence',
+  },
+  {
+    id: 'openai-sora-chatgpt',
+    number: 2,
+    headline: 'OpenAI Integrates Sora into ChatGPT — A Competitive Response Wrapped in a Product Launch',
+    deck: 'OpenAI plans to fold its AI video generator directly into ChatGPT. The move comes as ChatGPT uninstalls surged 295% following OpenAI\'s Pentagon deal — and as Claude\'s popularity reaches a new peak.',
     signal: 'grounded',
     signalLabel: 'Grounded',
     signalBars: 4,
     tags: [
-      { label: '⚖ Source Conflict', type: 'conflict' },
+      { label: '🔥 Hype Alert', type: 'hype' },
       { label: '🕵 Missing Context', type: 'missing' },
-      { label: '✓ Independently Confirmed', type: 'confirmed' },
+      { label: '🏢 Source Interest', type: 'source-interest' },
     ],
     body: [
-      'On March 9, Anthropic filed two federal lawsuits against the U.S. Department of Defense and related agencies, challenging the Pentagon\'s decision to designate the company a "supply chain risk" — a label that effectively bans it from federal contracts. The designation followed a breakdown in negotiations over whether Claude could be used in autonomous weapons systems and government surveillance programs, both of which Anthropic\'s usage policy explicitly prohibits.',
-      'The industry response was swift and unusually unified. Within hours of the filing, more than 30 employees from OpenAI and Google DeepMind — including Google\'s chief scientist Jeff Dean — filed an amicus brief in support of Anthropic. Microsoft followed on March 10 with its own amicus brief, urging the court to issue a temporary restraining order against the Pentagon\'s designation. The Hill and Reuters both independently confirmed Microsoft\'s filing.',
-      'The core legal dispute centers on whether the Pentagon\'s designation constitutes unlawful retaliation for Anthropic\'s refusal to remove safety guardrails from its models. Anthropic argues the designation is "legally unsound" and would cause irreparable harm to its existing federal contracts. The DOD has not publicly responded to the lawsuit\'s specific claims.',
+      'OpenAI is planning to integrate its Sora AI video generator directly into ChatGPT, according to The Information, citing people with knowledge of the effort. Sora is currently only available as a standalone mobile and web app, which has fallen well short of ChatGPT\'s user numbers since its September 2025 launch. The integration would make video generation a built-in ChatGPT feature, similar to how image generation was added to the chatbot last year.',
+      'The timing is notable. ChatGPT uninstalls surged 295% in the weeks following OpenAI\'s decision to agree to the Pentagon\'s terms — terms that Anthropic refused, triggering a federal lawsuit. Anthropic\'s Claude has been experiencing a significant boom in popularity during the same period. Adding Sora to ChatGPT appears to be at least partly a defensive move to retain and re-attract users who have migrated to Claude.',
+      'The integration carries real risks. When Sora launched as a standalone app, users almost immediately generated realistic deepfakes of historical figures including Martin Luther King Jr., and produced videos containing copyrighted content. Making Sora accessible inside ChatGPT — which has a vastly larger user base — will substantially increase the scale of these problems. OpenAI is already showing ads in ChatGPT on its cheapest plans, and adding Sora would increase compute costs, potentially leading to further pricing changes. The company also recently backed out of a planned Stargate data center expansion in Texas due to financing issues.',
     ],
     callouts: [
       {
         type: 'note',
         title: 'Editor\'s Note',
-        body: 'This is a follow-up to Edition 001\'s lead story on the Anthropic vs. Pentagon dispute. New developments: Microsoft amicus brief (March 10), OpenAI/Google employee brief (March 9), and escalation to formal federal lawsuit.',
+        body: 'The Information\'s reporting is based on unnamed sources. OpenAI has not officially confirmed the integration or provided a timeline. The 295% uninstall surge figure comes from TechCrunch citing app analytics data — it measures app removals, not active user loss, and should be interpreted cautiously.',
       },
       {
         type: 'warning',
-        title: 'What\'s still missing',
-        body: 'Reporting on Claude\'s alleged use in the Iran strikes — hours after the supply chain risk designation was announced — remains thin. The Intercept flagged this angle; mainstream outlets have not followed up. This is the most significant underreported element of the story.',
+        title: 'What\'s missing',
+        body: 'Most coverage frames this as a product expansion. The more important story is what it reveals about OpenAI\'s competitive position: the company that defined the consumer AI market is now reacting to Anthropic\'s momentum rather than leading it. The deepfake and content moderation implications of a Sora-ChatGPT integration are receiving almost no coverage.',
       },
     ],
-    sources: 'Reuters, Wired (Maxwell Zeff), TechCrunch, The Hill, Forbes, NPR, WSJ, CNN, Anthropic (primary filings)',
+    sources: 'The Information (primary, paywalled), The Verge (Stevie Bonifield), Reuters, PCMag, Gizmodo, TechCrunch',
   },
   {
-    id: 'nvidia-gtc',
-    number: 2,
-    headline: 'NVIDIA GTC 2026: Vera Rubin Debuts, NemoClaw Rumored, and the Agentic Pivot',
-    deck: 'NVIDIA\'s biggest conference of the year opens Monday. Vera Rubin is expected to formally launch — and a new open-source AI agent platform called NemoClaw may steal the show.',
+    id: 'trump-ai-preemption',
+    number: 3,
+    headline: 'Trump\'s AI Executive Order vs. 50 State Laws — A Constitutional Collision in Progress',
+    deck: 'The administration\'s "Ensuring a National Policy Framework for AI" order asserts broad federal preemption of state AI regulation. Legal experts say the theory faces significant obstacles. Meanwhile, states are not waiting.',
+    signal: 'grounded',
+    signalLabel: 'Grounded',
+    signalBars: 4,
+    tags: [
+      { label: '🏛 Government / Regulatory', type: 'regulatory' },
+      { label: '⚖ Source Conflict', type: 'conflict' },
+      { label: '🕵 Missing Context', type: 'missing' },
+    ],
+    body: [
+      'The Trump administration\'s executive order "Ensuring a National Policy Framework for Artificial Intelligence" asserts broad federal authority to preempt state AI laws, establishing what the administration calls a "minimally burdensome national standard." The order directs the Department of Justice to create an AI Litigation Task Force with the "sole responsibility" of challenging state AI laws on constitutional grounds — including Commerce Clause violations, federal preemption, and First Amendment arguments. The Commerce Department is required to publish an evaluation of "onerous" state laws, particularly those requiring AI models to "alter their truthful outputs."',
+      'The legal theory faces substantial obstacles. Congress has already rejected two legislative attempts to preempt state AI regulation: a 10-year moratorium provision in the "One Big Beautiful Bill Act" was stripped by a 99-1 Senate vote, and a similar provision in the 2025 NDAA was also rejected. Legal analysts at Ropes Gray note that the administration\'s preemption arguments — particularly the claim that state anti-discrimination requirements force AI models to produce "false results" — are novel and likely to face significant judicial scrutiny.',
+      'States are not waiting for the federal government to act. Washington state passed two significant AI bills this week: HB 1170 (AI disclosure requirements) and HB 2225 (chatbot safety for children, including self-harm protocols). Utah passed nine AI-related bills in its short session. Virginia passed three. Florida\'s Governor DeSantis introduced an "AI Bill of Rights" (SB 482) that passed the Senate 35-2 but is stalling in the House. In 2025 alone, all 50 states introduced AI legislation, and 38 enacted laws. The Commerce Department report identifying "onerous" state laws — due by March 11, 2026 — had not been publicly released as of this writing.',
+    ],
+    callouts: [
+      {
+        type: 'conflict',
+        title: 'The core tension',
+        body: 'The administration frames state AI laws as creating a "patchwork" that harms innovation and start-ups. State advocates frame the same laws as essential consumer protections that the federal government has refused to provide. Both framings contain truth. The administration\'s specific argument — that anti-discrimination requirements force AI models to produce "false results" — is a contested legal and technical claim that has not been adjudicated.',
+      },
+      {
+        type: 'warning',
+        title: 'What\'s missing',
+        body: 'The Commerce Department report identifying specific state laws for DOJ challenge was due March 11 but has not been released. Until that report is public, the actual scope of the federal preemption effort remains unclear. Coverage of this story has largely focused on the executive order\'s text without tracking the implementation deadlines.',
+      },
+    ],
+    sources: 'Ropes Gray (legal analysis), Transparency Coalition AI (legislative tracker), Bloomberg Government, Mondaq, White House (primary EO text), Florida Bar News',
+  },
+  {
+    id: 'nvidia-gtc-confirmed',
+    number: 4,
+    headline: 'NVIDIA GTC 2026 — What\'s Confirmed, What\'s Rumored, and What the Specs Actually Mean',
+    deck: 'Vera Rubin\'s architecture is now public: 288 GB HBM4, 35–50 petaFLOPS, 5x over Blackwell. The Groq acquisition\'s strategic logic is becoming clear. NemoClaw remains unconfirmed. GTC opens Monday.',
     signal: 'mixed',
     signalLabel: 'Mixed',
     signalBars: 3,
@@ -118,80 +181,29 @@ export const stories: Story[] = [
       { label: '🏢 Source Interest', type: 'source-interest' },
     ],
     body: [
-      'NVIDIA\'s GTC 2026 conference runs March 16–19 in San Jose, California, with CEO Jensen Huang\'s keynote scheduled for Monday at 2 p.m. ET. The event is widely expected to serve as the formal debut of the Vera Rubin architecture — NVIDIA\'s next-generation AI chip platform succeeding Blackwell.',
-      'Leaked specifications circulating ahead of the event describe Vera Rubin as delivering approximately 50 petaflops of inference performance, roughly 5x faster than Blackwell, with 10x cheaper inference token costs and a claimed ability to train frontier models with 4x fewer GPUs. These figures have not been independently verified and should be treated as promotional until confirmed by third-party benchmarks.',
-      'Separately, Wired and CNBC reported that NVIDIA is planning to announce an open-source AI agent platform called NemoClaw at GTC. According to people familiar with the plans, NemoClaw is designed to help enterprise software companies deploy AI agents — and has already been pitched to major enterprise vendors. The platform is described as similar in concept to OpenClaw but built on NVIDIA\'s NeMo framework. NVIDIA has not officially confirmed NemoClaw\'s existence.',
-      'The GTC conference is also expected to include announcements related to NVIDIA\'s $20 billion acquisition of Groq — a move that would give NVIDIA access to Groq\'s LPU (Language Processing Unit) architecture, which uses on-die SRAM to deliver dramatically faster inference for agentic workloads. An announcement is rumored but not confirmed.',
+      'NVIDIA\'s GTC 2026 conference opens Monday, March 16 in San Jose, with CEO Jensen Huang\'s keynote at 11 a.m. PT. The Vera Rubin GPU architecture — first teased at CES in January — has now been publicly detailed: 288 GB of HBM4 memory, 22 TB/s of memory bandwidth, and 35–50 petaFLOPS of dense NVFP4 performance depending on configuration. This represents a 5x throughput improvement over Blackwell. The chip\'s thermal design power is estimated at approximately 1.8 kW, making liquid cooling a requirement rather than an option — a potential adoption barrier for some data center operators.',
+      'The strategic context for GTC is NVIDIA\'s $20 billion acquisition of Groq, completed in December 2025. Groq\'s LPU (Language Processing Unit) architecture uses on-die SRAM rather than HBM, enabling token generation rates exceeding 500–1,000 tokens per second — dramatically faster than GPU-based architectures for latency-sensitive agentic workloads. This is precisely the capability gap that allowed Cerebras to win OpenAI\'s Codex model business earlier this year. At GTC, NVIDIA is expected to announce how it will integrate Groq\'s dataflow architecture into its CUDA software stack, though full integration is a multi-year engineering effort.',
+      'NVIDIA is also expected to detail its standalone Vera CPU — 88 custom Arm cores with simultaneous multithreading and confidential computing features. Meta has been confirmed as the first partner to evaluate Vera CPUs for datacenter deployment. Looking further out, Huang is expected to preview Kyber racks (2027, 600 kW, 144 GPU sockets) and Feynman GPUs (2028, expected to exceed 1 MW per rack). NVIDIA has also invested $2 billion in Nebius AI cloud and is backing former OpenAI CTO Mira Murati\'s new startup, signaling continued expansion beyond chip hardware.',
     ],
     callouts: [
       {
         type: 'warning',
-        title: 'Signal Note',
-        body: 'GTC is NVIDIA\'s own event. All announcements should be treated as vendor-sourced until independently benchmarked. The Vera Rubin performance claims are particularly subject to marketing inflation — compare against IEEE Spectrum and ArXiv benchmarks when they emerge.',
+        title: 'Signal note',
+        body: 'GTC is NVIDIA\'s own conference. All performance claims should be treated as vendor-sourced until independently benchmarked by IEEE Spectrum, AnandTech, or ArXiv. The 35–50 petaFLOPS figure is NVIDIA\'s own specification; real-world inference performance will depend heavily on workload type and memory utilization patterns. NemoClaw — the rumored open-source AI agent platform — has not been officially confirmed by NVIDIA as of this writing.',
       },
-    ],
-    sources: 'Wired (Zoë Schiffer, Lauren Goode), CNBC, Fortune, The Register, Forbes (Jon Markman), NVIDIA Blog (primary), DataCenter Dynamics',
-  },
-  {
-    id: 'bytedance-malaysia',
-    number: 3,
-    headline: 'ByteDance Finds a Legal Workaround: 36,000 Blackwell GPUs via Malaysia',
-    deck: 'TikTok\'s parent company is accessing a $2.5 billion NVIDIA Blackwell cluster — physically located in Malaysia — while U.S. export controls technically permit it.',
-    signal: 'pure',
-    signalLabel: 'Pure Signal',
-    signalBars: 5,
-    tags: [
-      { label: '✓ Independently Confirmed', type: 'confirmed' },
-      { label: '🏛 Government / Regulatory', type: 'regulatory' },
-      { label: '🕵 Missing Context', type: 'missing' },
-    ],
-    body: [
-      'ByteDance, the Chinese parent company of TikTok, is set to access a cluster of approximately 36,000 NVIDIA B200 Blackwell GPUs through Aolani Cloud, a Malaysia-based cloud operator. The cluster — consisting of roughly 500 NVL72 GB200 rack-scale systems and valued at approximately $2.5 billion — will be physically located in Malaysia and formally owned by Aolani, according to reporting by the Wall Street Journal confirmed by Tom\'s Hardware.',
-      'NVIDIA confirmed to Tom\'s Hardware that the arrangement is compliant with current U.S. export control rules: "By design, the export rules allow clouds to be built and operated outside controlled countries," an NVIDIA spokesperson stated. ByteDance is not on the Bureau of Industry and Security\'s Entity List or Military End Use list, meaning its use of the cluster does not automatically trigger export control violations.',
-      'The arrangement highlights a structural gap in the 2023 U.S. export control framework: the rules regulate where hardware is shipped, not where its compute is used. ByteDance has reportedly been leasing NVIDIA H100 GPUs from Aolani in Malaysia since February 2025, suggesting the Blackwell deployment is an expansion of an existing arrangement.',
-    ],
-    callouts: [
       {
-        type: 'warning',
-        title: 'What\'s missing',
-        body: 'The funding source for the cluster expansion is unclear — Aolani currently operates approximately $100 million in hardware, making the proposed $2.5 billion expansion a 25x scale-up. Who is financing this, and whether ByteDance is the effective economic owner of the hardware, are questions the current reporting does not resolve.',
+        type: 'note',
+        title: 'What to watch at the keynote',
+        body: 'The most important announcement will not be raw GPU specs — those are already public. Watch for: (1) how NVIDIA frames the Groq integration timeline and what "limited support" means in practice; (2) whether a standalone air-cooled Rubin variant is announced for buyers who cannot accommodate liquid cooling; (3) any confirmation or denial of NemoClaw.',
       },
     ],
-    sources: 'Wall Street Journal (primary), Tom\'s Hardware (Anton Shilov), The Decoder, NVIDIA (on-record statement)',
+    sources: 'The Register (Tobias Mann), Fortune, TradingKey, NVIDIA Blog (primary), Seeking Alpha, SemiAnalysis InferenceX benchmarks',
   },
   {
-    id: 'ai-jobs',
-    number: 4,
-    headline: 'The AI Jobs Debate Gets a Reality Check — From Anthropic\'s Own Economists',
-    deck: 'A new Anthropic research paper maps AI\'s actual labor market impact — and finds a significant gap between what AI could automate and what it is actually automating today.',
-    signal: 'grounded',
-    signalLabel: 'Grounded',
-    signalBars: 4,
-    tags: [
-      { label: '🎓 Peer-Reviewed', type: 'peer-reviewed' },
-      { label: '🏢 Source Interest', type: 'source-interest' },
-      { label: '⚖ Source Conflict', type: 'conflict' },
-    ],
-    body: [
-      'Anthropic economists Maxim Massenkoff and Peter McCrory published a research paper this week measuring AI\'s actual versus potential labor market impact across U.S. occupations. The paper introduces a distinction between "theoretical exposure" (the percentage of tasks in a field that AI could potentially automate) and "observed exposure" (the percentage of tasks where AI is currently being used).',
-      'The findings are more nuanced than most headlines suggest. Office administration has the highest observed exposure at approximately 40%, against a theoretical exposure of 90%. Computer programmers show 75% observed exposure; customer service representatives, 70%; data entry workers, 67%. However, fields like life sciences and healthcare — despite high theoretical exposure — show relatively low observed exposure today. Construction, agriculture, and skilled trades show near-zero exposure on both measures.',
-      'Critically, the paper finds little evidence of actual job losses even in the most-exposed fields. The researchers note that AI "may be slow to diffuse due to legal constraints, specific software requirements, human verification steps, or other hurdles." A Stanford study cited in the paper found signs of a hiring slowdown among younger software programmers — but could not fully disentangle this from post-pandemic overhiring corrections.',
-      'Separately, Atlassian announced on March 11 that it is cutting 10% of its global workforce — approximately 1,600 employees — citing the need to redirect resources toward AI. This follows Block\'s February announcement of 4,000 cuts. However, as with Block, the causal link between AI efficiency gains and the specific headcount reductions is CEO framing, not independently verified.',
-    ],
-    callouts: [
-      {
-        type: 'conflict',
-        title: 'The conflict',
-        body: 'Forbes published a pointed critique noting that Anthropic\'s study measures AI\'s impact on tasks, not on employment outcomes — and that AI could reduce hiring, slow promotions, and compress wages without triggering visible layoffs. The Brookings Institution published a concurrent analysis calling labor market AI research "still in the first inning."',
-      },
-    ],
-    sources: 'Anthropic Research (primary paper), Fortune/Eye on AI (Jeremy Kahn), Forbes (Hamilton Mann), Brookings Institution (Jed Kolko), TechCrunch, Bloomberg, The Guardian',
-  },
-  {
-    id: 'morgan-stanley',
+    id: 'altman-intelligence-utility',
     number: 5,
-    headline: 'Morgan Stanley\'s \'Intelligence Explosion\' Report — Read It, But Read It Carefully',
-    deck: 'The investment bank warns of a transformative AI leap in H1 2026, a 9–18 GW power shortfall, and mass workforce disruption. The signal is real. The framing needs scrutiny.',
+    headline: 'Sam Altman\'s "Intelligence as Utility" Speech — What He Said, What He Meant, and What He Left Out',
+    deck: 'At the BlackRock Infrastructure Summit, OpenAI\'s CEO called AI "too cheap to meter" and admitted the labor-capital balance is fundamentally breaking. Read the full context before accepting the framing.',
     signal: 'speculative',
     signalLabel: 'Speculative',
     signalBars: 2,
@@ -200,31 +212,41 @@ export const stories: Story[] = [
       { label: '🏢 Source Interest', type: 'source-interest' },
     ],
     body: [
-      'Morgan Stanley published a sweeping report this week predicting a "transformative AI" breakthrough in the first half of 2026, driven by unprecedented compute accumulation at U.S. AI labs. The report cites Elon Musk\'s claim that applying 10x compute to LLM training effectively doubles model "intelligence" — and argues that scaling laws supporting this claim are holding firm.',
-      'The report\'s most concrete claim is an infrastructure one: Morgan Stanley\'s "Intelligence Factory" model projects a net U.S. power shortfall of 9 to 18 gigawatts through 2028 — a 12% to 25% deficit in power needed to run planned AI infrastructure. This is consistent with independent analysis from Morgan Stanley\'s own energy research team (published February 2026) and Stanford HAI\'s recent grid infrastructure warning.',
-      'The report also cites OpenAI\'s GPT-5.4 scoring 83.0% on the GDPVal benchmark — placing it "at or above the level of human experts on economically valuable tasks." This claim requires verification: the GDPVal benchmark is OpenAI-developed, and the 83% figure comes from OpenAI\'s own system card. No independent replication of this benchmark result has been published.',
+      'Speaking at BlackRock\'s U.S. Infrastructure Summit on Wednesday, OpenAI CEO Sam Altman offered what he described as a vision for AI\'s future: "We see a future where intelligence is a utility, like electricity or water, and people buy it from us on a meter." He expanded on the "too cheap to meter" framing — a phrase borrowed from early nuclear energy advocates who predicted electricity would eventually be free — as the goal for AI compute costs. Altman also predicted that by late 2028, the cognitive capacity inside data centers will eclipse human capacity outside them.',
+      'The labor market comments were more candid than most of Altman\'s public appearances. He acknowledged that the traditional balance between labor and capital is "fundamentally changing" and admitted that if it is "hard in many of our current jobs to outwork a GPU, then that changes" the basis of capitalism. He described the next few years as "a painful adjustment" with "very intense and uncomfortable debates" over how to reshape society. He noted that AI has become a widespread scapegoat for corporate downsizing — "almost every company that does layoffs is blaming AI, whether or not it really is about AI" — while simultaneously confirming that the underlying structural threat to employment is real.',
+      'The context the speech omits is significant. Altman was speaking to Adebayo Ogunlesi, who is both a BlackRock executive and a member of OpenAI\'s board of directors — a setting that creates obvious incentives for optimistic framing. The "too cheap to meter" analogy is historically ironic: nuclear power never achieved that status, and AI\'s energy consumption is currently a major pain point for communities near data centers. OpenAI recently backed out of a planned Stargate expansion in Texas due to financing issues. OpenAI CFO Sarah Friar previously called for a federal "backstop" to guarantee the company\'s infrastructure investments — a comment both she and Altman later walked back. The utility framing implicitly revives that suggestion.',
     ],
     callouts: [
       {
         type: 'conflict',
-        title: 'Why to read with caution',
-        body: 'Morgan Stanley is an investment bank with significant financial exposure to AI infrastructure stocks. The report\'s framing — "the coin of the realm is becoming pure intelligence" — reads as market-moving commentary as much as neutral analysis. The xAI co-founder prediction of "recursive self-improvement loops" by H1 2027 is unverified speculation from a company with direct financial interest in AI hype. The power grid analysis is the most independently supportable element of the report.',
+        title: 'The framing problem',
+        body: 'Describing AI as a utility carries a specific regulatory implication: utilities are typically subject to public oversight, rate regulation, and universal service obligations. Altman almost certainly does not intend to invite that kind of regulatory framework. The utility metaphor is being deployed to suggest abundance and accessibility while avoiding the accountability structures that come with actual utility status.',
+      },
+      {
+        type: 'warning',
+        title: 'What\'s missing from coverage',
+        body: 'Most coverage of this speech focused on the "too cheap to meter" soundbite. The more substantive admission — that Altman genuinely does not know how society will manage the labor displacement AI is causing — received far less attention. His statement that "if there was an easy consensus answer, we\'d have done it by now, so I don\'t think anyone knows what to do" is a remarkable admission from the CEO of the company most responsible for accelerating that displacement.',
       },
     ],
-    sources: 'Fortune (Nick Lichtenberg), Morgan Stanley Research (primary), Stanford HAI, Morgan Stanley Energy Research (Feb 2026)',
+    sources: 'Gizmodo (primary transcript analysis), Fortune (Sharon Goldman), BlackRock Infrastructure Summit (video, public), Reuters, OpenAI (board disclosure)',
   },
 ];
 
 export const pipeline: PipelineItem[] = [
-  { topic: 'Claude use in Iran strikes post-ban', status: 'under-reported', statusLabel: '● Under-reported', priority: 'HIGH', sources: 'The Intercept, MIT Tech Review' },
-  { topic: 'Vera Rubin benchmark reality vs. claims', status: 'watch', statusLabel: '◐ Watch (post-GTC)', priority: 'HIGH', sources: 'IEEE Spectrum, ArXiv, AnandTech' },
+  { topic: 'Vera Rubin benchmark reality vs. claims (post-GTC)', status: 'active', statusLabel: '● Active (GTC this week)', priority: 'HIGH', sources: 'IEEE Spectrum, ArXiv, AnandTech' },
   { topic: 'Anthropic DOD lawsuit outcome', status: 'active', statusLabel: '● Active', priority: 'HIGH', sources: 'Court filings, CNN, CNBC' },
+  { topic: 'NemoClaw open-source agent platform — confirmation', status: 'watch', statusLabel: '◐ Watch (GTC keynote)', priority: 'HIGH', sources: 'NVIDIA Blog, Wired, CNBC' },
+  { topic: 'Commerce Dept AI state law evaluation (due March 11, unreleased)', status: 'verify', statusLabel: '? Verify', priority: 'HIGH', sources: 'Commerce Dept, Bloomberg Government' },
+  { topic: 'Meta Avocado performance benchmarks — when released', status: 'watch', statusLabel: '◐ Watch (May release)', priority: 'HIGH', sources: 'Hugging Face, ArXiv, HELM' },
+  { topic: 'OpenAI Sora → ChatGPT integration timeline', status: 'watch', statusLabel: '◐ Watch', priority: 'MEDIUM', sources: 'The Information, The Verge, OpenAI Blog' },
   { topic: 'ByteDance Malaysia cluster — funding source', status: 'verify', statusLabel: '? Verify', priority: 'MEDIUM', sources: 'WSJ, BIS filings, Reuters' },
   { topic: 'GPT-5.4 GDPVal 83% — independent replication', status: 'verify', statusLabel: '? Verify', priority: 'HIGH', sources: 'OpenAI system card, ArXiv, HELM' },
+  { topic: 'Claude use in Iran strikes post-ban', status: 'under-reported', statusLabel: '● Under-reported', priority: 'HIGH', sources: 'The Intercept, MIT Tech Review' },
   { topic: 'EU AI Act enforcement timeline 2026', status: 'watch', statusLabel: '◐ Watch', priority: 'MEDIUM', sources: 'EU AI Office, The Guardian' },
 ];
 
 export const editionHistory: EditionHistoryItem[] = [
   { edition: '001', date: 'March 13, 2026', isoDate: '2026-03-13', leadStory: 'Anthropic vs. Pentagon (initial filing)', status: 'published' },
-  { edition: '002', date: 'March 13, 2026', isoDate: '2026-03-13', leadStory: 'Anthropic Follow-Up + NVIDIA GTC + ByteDance', status: 'current' },
+  { edition: '002', date: 'March 13, 2026', isoDate: '2026-03-13', leadStory: 'Anthropic Follow-Up + NVIDIA GTC + ByteDance', status: 'published' },
+  { edition: '003', date: 'March 13, 2026', isoDate: '2026-03-13', leadStory: 'Meta Avocado Delay + OpenAI Sora + Trump AI EO', status: 'current' },
 ];
