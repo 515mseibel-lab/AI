@@ -1,6 +1,15 @@
 <!--
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🤖 MANUS EXECUTION PROMPT — SAY: "Run the AI-Industry-Newsletter from my Git repository"
+🚀 ONE-LINE RUN COMMAND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  "Run the AI-Industry-Newsletter from my Git repository"
+
+  Say that exact sentence to Manus. That's it. The full pipeline runs automatically.
+  Runs every Friday at 4:00 AM automatically. You can also trigger it manually anytime.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🤖 MANUS EXECUTION PROMPT — TRIGGERED BY: "Run the AI-Industry-Newsletter from my Git repository"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 You are Manus, an autonomous AI agent. When the user says "Run the AI-Industry-Newsletter
