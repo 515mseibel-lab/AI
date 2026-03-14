@@ -178,7 +178,37 @@ GitHub repo (AI):
 
 **Tag type values** for story tags: `'conflict'` | `'missing'` | `'confirmed'` | `'hype'` | `'regulatory'` | `'peer-reviewed'` | `'source-interest'`
 
-### 5. GitHub Pages Setup (One-Time, Already Done)
+### 5. Favicon — Do Not Overwrite
+The following files in `docs/Newsletters/AI_Signal/` are permanent branded assets — **never delete them during a build update**:
+
+| File | Purpose |
+|------|---------|
+| `favicon.ico` | Multi-size ICO (16×16 to 180×180) — browser tab icon |
+| `favicon.png` | Full-resolution source (2048×2048) |
+| `favicon-32.png` | 32×32 PNG |
+| `apple-touch-icon.png` | 180×180 — iOS home screen icon |
+| `icon-512.png` | 512×512 — PWA manifest icon |
+
+These are referenced in `client/index.html` and are automatically included in the build output (they live in `client/public/`). The originals are stored at `/home/ubuntu/webdev-static-assets/ai-signal-favicon.*`.
+
+**Safe copy command** (preserves favicon files while updating assets and index.html only):
+```bash
+rm -rf ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/assets
+rm -f ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/index.html
+cp /home/ubuntu/ai-signal-newsletter/dist/public/index.html ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/
+cp -r /home/ubuntu/ai-signal-newsletter/dist/public/assets ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/
+rm -rf ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/__manus__
+```
+
+### 6. Edition Navigation — Data Structure
+The web app supports **in-page edition switching** via prev/next buttons. This works automatically as long as:
+- Every edition in `allEditions` array has a **unique `isoDate`** (format: `YYYY-MM-DD`)
+- Editions are added to the `allEditions` array in `newsletterData.ts` (not a separate `editionHistory` array)
+- The newest edition is always the last entry in the array (the app defaults to showing the latest)
+
+Each edition object in `allEditions` must include: `number`, `date`, `isoDate`, `tagline`, `editorNote`, `stories[]`, `pipeline[]`.
+
+### 7. GitHub Pages Setup (One-Time, Already Done)
 GitHub Pages is already enabled on the `515mseibel-lab/AI` repo, serving from `main` branch `/docs` folder. No further setup is needed. Every push to `docs/Newsletters/AI_Signal/` automatically updates the live URL within ~60 seconds.
 
 ---
