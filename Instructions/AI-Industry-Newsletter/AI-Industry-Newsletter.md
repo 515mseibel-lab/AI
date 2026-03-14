@@ -52,24 +52,34 @@ STEP 5 — UPDATE THE WEB APP
   The live interactive newsletter web app lives at:
     Manus project: ai-signal-newsletter (at /home/ubuntu/ai-signal-newsletter)
     Live URL: https://515mseibel-lab.github.io/AI/Newsletters/AI_Signal/
+
+  ⚠️  CRITICAL BUILD RULES — READ BEFORE BUILDING:
+    - ALWAYS build from /home/ubuntu/ai-signal-newsletter (NOT any other directory)
+    - This project has base: '/AI/Newsletters/AI_Signal/' in vite.config.ts — DO NOT change it
+    - ALWAYS delete __manus__ folder from docs/ after copying (it must NEVER be deployed)
+    - NEVER delete 404.html or docs/index.html — these are permanent routing files
+    - Verify the built index.html contains src="/AI/Newsletters/AI_Signal/assets/..." before pushing
+
   To update it for a new edition:
-    a) Edit the data file — it lives in TWO places that must be kept in sync:
-       - Manus project (used for building): /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts
-       - GitHub repo (source of record):    Newsletters/AI-Industry/newsletterData.ts
-       Always edit the Manus project file first, then copy it to the repo after building.
-       - Update the edition object (number, date, editorNote)
+    a) Edit the data file at: /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts
+       - Update the edition object (number, date, isoDate, editorNote)
        - Replace the stories array with the new edition's 5 stories
        - Replace the pipeline array with the new watch list
-       - Add the new edition to the editionHistory array
-    b) Run: cd /home/ubuntu/ai-signal-newsletter && pnpm build
-    c) Copy build output to the AI repo:
+       - Add the new edition to the editionHistory array (include isoDate field)
+    b) Build — MUST run from the correct directory:
+       cd /home/ubuntu/ai-signal-newsletter && pnpm build
+       Verify: grep 'src=' dist/public/index.html | head -1
+       Expected output must contain: /AI/Newsletters/AI_Signal/assets/
+       If it shows /assets/ without the full path — STOP and fix vite.config.ts base path first.
+    c) Copy build output to the AI repo (exact commands, run in order):
        rm -rf ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/assets
        rm -f ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/index.html
-       rm -f ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/404.html
-       cp -r /home/ubuntu/ai-signal-newsletter/dist/public/. ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/
+       cp /home/ubuntu/ai-signal-newsletter/dist/public/index.html ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/
+       cp -r /home/ubuntu/ai-signal-newsletter/dist/public/assets ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/
        rm -rf ~/AI-Industry-Newsletter/docs/Newsletters/AI_Signal/__manus__
-    d) The 404.html SPA redirect and docs/index.html root redirect are already in place —
-       do NOT delete them. Only replace index.html and assets/ inside AI_Signal/.
+    d) Sync source data to repo:
+       cp /home/ubuntu/ai-signal-newsletter/client/src/lib/newsletterData.ts \
+          ~/AI-Industry-Newsletter/Newsletters/AI-Industry/newsletterData.ts
 
 STEP 6 — SAVE EVERYTHING TO GITHUB
   Commit and push all new files in one commit:
