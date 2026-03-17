@@ -3,505 +3,898 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Copilot Updates: Edition 001</title>
+  <title>DCN Tech Corner: Copilot Updates | Edition 001</title>
   <style>
-    /* Reset */
+    /* ===== RESET ===== */
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
     table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
     img { -ms-interpolation-mode: bicubic; border: 0; display: block; }
 
+    /* ===== DCN BRAND COLORS =====
+       Teal:    #00C1CF  (primary)
+       Teal dk: #0097A7
+       Purple:  #8D6DC4
+       Crimson: #B03A2E
+       Dark:    #2C2C2C
+       Light:   #F7F9FA
+    */
+
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
+      margin: 0; padding: 0;
+      background-color: #EAEFF2;
       font-family: 'Segoe UI', Arial, sans-serif;
-      color: #333333;
+      color: #2C2C2C;
     }
 
     .wrapper {
       max-width: 680px;
       margin: 0 auto;
       background-color: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
     }
 
-    /* Header */
+    /* ===== HEADER ===== */
     .header {
-      background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
-      padding: 36px 40px 28px 40px;
-      text-align: center;
+      background: linear-gradient(135deg, #0097A7 0%, #00C1CF 60%, #8D6DC4 100%);
+      padding: 0;
     }
-    .header-logo {
-      font-size: 13px;
-      color: #cce4f7;
+    .header-top {
+      padding: 20px 36px 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-brand {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 8px;
     }
-    .header h1 {
-      margin: 0;
-      font-size: 30px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.2;
-    }
-    .header .edition-badge {
-      display: inline-block;
-      margin-top: 12px;
+    .header-edition {
       background-color: rgba(255,255,255,0.2);
-      color: #ffffff;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 14px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
       border-radius: 20px;
       letter-spacing: 1px;
     }
-    .header .date {
-      margin-top: 8px;
+    .header-main {
+      padding: 16px 36px 28px 36px;
+      text-align: center;
+    }
+    .header-main .newsletter-name {
       font-size: 13px;
-      color: #cce4f7;
+      font-weight: 700;
+      color: rgba(255,255,255,0.80);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .header-main h1 {
+      margin: 0 0 6px 0;
+      font-size: 34px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .header-main .tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .header-main .date-pill {
+      display: inline-block;
+      background-color: rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 16px;
+      border-radius: 20px;
     }
 
-    /* Intro */
+    /* ===== WAVE DIVIDER ===== */
+    .wave {
+      background: linear-gradient(135deg, #0097A7 0%, #00C1CF 60%, #8D6DC4 100%);
+      line-height: 0;
+    }
+    .wave svg { display: block; }
+
+    /* ===== INTRO ===== */
     .intro {
-      padding: 28px 40px 20px 40px;
-      background-color: #f0f7ff;
-      border-left: 4px solid #0078d4;
+      padding: 24px 36px 20px 36px;
+      background-color: #F0FAFB;
+      border-left: 5px solid #00C1CF;
     }
     .intro p {
       margin: 0;
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #444;
     }
+    .intro p strong { color: #0097A7; }
 
-    /* Section header */
+    /* ===== SECTION HEADER ===== */
     .section-header {
-      padding: 28px 40px 0 40px;
+      padding: 28px 36px 4px 36px;
     }
     .section-header h2 {
-      margin: 0 0 4px 0;
-      font-size: 20px;
-      font-weight: 700;
-      color: #0078d4;
-      border-bottom: 2px solid #e0edf8;
-      padding-bottom: 10px;
+      margin: 0;
+      font-size: 21px;
+      font-weight: 800;
+      color: #0097A7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-header h2 .icon { font-size: 22px; }
+    .section-underline {
+      height: 3px;
+      background: linear-gradient(to right, #00C1CF, #8D6DC4, transparent);
+      margin: 8px 36px 20px 36px;
+      border-radius: 2px;
     }
 
-    /* Feature card */
+    /* ===== FEATURE CARD ===== */
     .feature-card {
-      margin: 0 40px 24px 40px;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
+      margin: 0 36px 28px 36px;
+      border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,193,207,0.12);
+      border: 1px solid #D0EEF1;
     }
     .feature-card-header {
-      background-color: #0078d4;
-      padding: 12px 20px;
+      background: linear-gradient(90deg, #0097A7 0%, #00C1CF 100%);
+      padding: 14px 22px;
     }
     .feature-card-header .feature-number {
-      font-size: 11px;
-      color: #cce4f7;
-      letter-spacing: 1px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
+      margin-bottom: 3px;
     }
     .feature-card-header h3 {
-      margin: 4px 0 0 0;
-      font-size: 17px;
-      font-weight: 700;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
       color: #ffffff;
     }
     .feature-card-body {
-      padding: 20px;
+      padding: 22px;
+      background: #fff;
     }
-    .feature-card-body .label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #0078d4;
+    .label {
+      font-size: 10px;
+      font-weight: 800;
+      color: #0097A7;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px;
     }
     .feature-card-body p {
-      margin: 0 0 16px 0;
+      margin: 0 0 18px 0;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #444;
     }
 
-    /* Steps */
-    .steps {
-      background-color: #f8fbff;
-      border: 1px solid #d0e6f8;
-      border-radius: 6px;
-      padding: 16px 20px;
-      margin-top: 4px;
+    /* ===== SCREENSHOT PLACEHOLDER ===== */
+    .screenshot {
+      background: linear-gradient(135deg, #E8F8FA 0%, #EEF0FB 100%);
+      border: 2px dashed #00C1CF;
+      border-radius: 8px;
+      padding: 0;
+      margin: 14px 0;
+      overflow: hidden;
     }
-    .steps .steps-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #0078d4;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
+    .screenshot-bar {
+      background: linear-gradient(90deg, #0097A7, #00C1CF);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .steps ol {
-      margin: 0;
-      padding-left: 20px;
+    .screenshot-bar .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      display: inline-block;
     }
-    .steps ol li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #333;
-      margin-bottom: 6px;
+    .screenshot-bar .dot-red { background: #ff5f56; }
+    .screenshot-bar .dot-yellow { background: #ffbd2e; }
+    .screenshot-bar .dot-green { background: #27c93f; }
+    .screenshot-bar .bar-title {
+      font-size: 11px;
+      color: rgba(255,255,255,0.85);
+      margin-left: 8px;
+      font-weight: 600;
     }
-    .steps ol li:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Image placeholder */
-    .img-placeholder {
-      background-color: #e8f0fe;
-      border: 2px dashed #0078d4;
-      border-radius: 6px;
-      text-align: center;
+    .screenshot-content {
       padding: 20px;
-      margin-top: 16px;
-      color: #0078d4;
+      text-align: center;
+    }
+    .screenshot-content .ss-icon { font-size: 36px; margin-bottom: 8px; }
+    .screenshot-content .ss-label {
       font-size: 13px;
+      color: #0097A7;
+      font-weight: 600;
       font-style: italic;
     }
+    .screenshot-content .ss-sub {
+      font-size: 11px;
+      color: #999;
+      margin-top: 4px;
+    }
 
-    /* Tip card */
+    /* ===== STEPS ===== */
+    .steps-box {
+      background-color: #F7FDFE;
+      border: 1px solid #B2E8ED;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-top: 6px;
+    }
+    .steps-box .steps-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #0097A7;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .steps-box ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+    .steps-box ol li {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+    .steps-box ol li:last-child { margin-bottom: 0; }
+    .steps-box ol li code {
+      background: #E0F7FA;
+      color: #006064;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    /* ===== TIP CARD ===== */
     .tip-card {
-      margin: 0 40px 24px 40px;
-      background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
-      border: 1px solid #ffc107;
-      border-left: 5px solid #ffc107;
-      border-radius: 8px;
-      padding: 20px;
+      margin: 0 36px 28px 36px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(141,109,196,0.15);
+      border: 1px solid #DDD5F0;
     }
-    .tip-card .tip-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #856404;
+    .tip-card-header {
+      background: linear-gradient(90deg, #7B5EA7 0%, #8D6DC4 100%);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tip-card-header .tip-emoji { font-size: 24px; }
+    .tip-card-header-text .tip-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-    .tip-card h3 {
-      margin: 0 0 12px 0;
-      font-size: 17px;
       font-weight: 700;
-      color: #333;
+      margin-bottom: 3px;
     }
-    .tip-card .label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #856404;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
+    .tip-card-header-text h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
     }
-    .tip-card p {
-      margin: 0 0 14px 0;
+    .tip-card-body {
+      padding: 22px;
+      background: #fff;
+    }
+    .tip-card-body p {
+      margin: 0 0 16px 0;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #444;
+    }
+    .tip-label-inline {
+      font-size: 10px;
+      font-weight: 800;
+      color: #7B5EA7;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px;
+    }
+    .steps-box-purple {
+      background-color: #FAF8FF;
+      border: 1px solid #D4C8EE;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-top: 6px;
+    }
+    .steps-box-purple .steps-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #7B5EA7;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .steps-box-purple ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+    .steps-box-purple ol li {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+    .steps-box-purple ol li:last-child { margin-bottom: 0; }
+    .screenshot-purple {
+      background: linear-gradient(135deg, #F5F0FF 0%, #EEF0FB 100%);
+      border: 2px dashed #8D6DC4;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 14px 0;
+    }
+    .screenshot-purple .screenshot-bar {
+      background: linear-gradient(90deg, #7B5EA7, #8D6DC4);
     }
 
-    /* Mobile card */
+    /* ===== MOBILE CARD ===== */
     .mobile-card {
-      margin: 0 40px 24px 40px;
-      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-      border: 1px solid #66bb6a;
-      border-left: 5px solid #43a047;
-      border-radius: 8px;
-      padding: 20px;
+      margin: 0 36px 28px 36px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(176,58,46,0.10);
+      border: 1px solid #F5C6C2;
     }
-    .mobile-card .mobile-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #2e7d32;
+    .mobile-card-header {
+      background: linear-gradient(90deg, #922B21 0%, #B03A2E 100%);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mobile-card-header .mobile-emoji { font-size: 24px; }
+    .mobile-card-header-text .mobile-label-top {
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-    .mobile-card h3 {
-      margin: 0 0 12px 0;
-      font-size: 17px;
       font-weight: 700;
-      color: #333;
+      margin-bottom: 3px;
     }
-    .mobile-card .label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #2e7d32;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
+    .mobile-card-header-text h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
     }
-    .mobile-card p {
-      margin: 0 0 14px 0;
+    .mobile-card-body {
+      padding: 22px;
+      background: #fff;
+    }
+    .mobile-card-body p {
+      margin: 0 0 16px 0;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #444;
+    }
+    .mobile-label-inline {
+      font-size: 10px;
+      font-weight: 800;
+      color: #B03A2E;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px;
+    }
+    .platform-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
     }
     .platform-badge {
-      display: inline-block;
-      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 12px;
-      margin-right: 6px;
-      margin-bottom: 8px;
+      padding: 4px 12px;
+      border-radius: 14px;
     }
-    .ios-badge { background-color: #e3f2fd; color: #0d47a1; }
-    .android-badge { background-color: #e8f5e9; color: #1b5e20; }
+    .ios-badge { background-color: #E3F2FD; color: #0D47A1; }
+    .android-badge { background-color: #E8F5E9; color: #1B5E20; }
+    .steps-box-red {
+      background-color: #FFF8F7;
+      border: 1px solid #F5C6C2;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .steps-box-red .steps-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #B03A2E;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .steps-box-red ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+    .steps-box-red ol li {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+    .steps-box-red ol li:last-child { margin-bottom: 0; }
+    .screenshot-red {
+      background: linear-gradient(135deg, #FFF0EE 0%, #FFF5F0 100%);
+      border: 2px dashed #B03A2E;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 14px 0;
+    }
+    .screenshot-red .screenshot-bar {
+      background: linear-gradient(90deg, #922B21, #B03A2E);
+    }
 
-    /* Divider */
+    /* ===== DIVIDER ===== */
     .divider {
       height: 1px;
-      background-color: #e0e0e0;
-      margin: 8px 40px 24px 40px;
+      background: linear-gradient(to right, #00C1CF, #8D6DC4, transparent);
+      margin: 4px 36px 24px 36px;
+      opacity: 0.3;
     }
 
-    /* Footer */
-    .footer {
-      background-color: #005a9e;
-      padding: 24px 40px;
-      text-align: center;
-    }
-    .footer p {
-      margin: 0 0 8px 0;
-      font-size: 13px;
-      color: #cce4f7;
-      line-height: 1.6;
-    }
-    .footer .footer-links a {
-      color: #90caf9;
-      text-decoration: none;
-      font-size: 12px;
-      margin: 0 8px;
-    }
-    .footer .disclaimer {
-      margin-top: 12px;
-      font-size: 11px;
-      color: #7bafd4;
-    }
-
-    /* Sources */
+    /* ===== SOURCES ===== */
     .sources {
-      padding: 16px 40px 24px 40px;
-      background-color: #fafafa;
-      border-top: 1px solid #e0e0e0;
+      padding: 16px 36px 20px 36px;
+      background-color: #F7F9FA;
+      border-top: 1px solid #E0E0E0;
     }
     .sources h4 {
       margin: 0 0 8px 0;
-      font-size: 12px;
-      font-weight: 700;
-      color: #888;
+      font-size: 11px;
+      font-weight: 800;
+      color: #aaa;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
     .sources p {
       margin: 0;
       font-size: 11px;
-      color: #999;
-      line-height: 1.7;
+      color: #aaa;
+      line-height: 1.8;
     }
-    .sources a { color: #0078d4; }
+    .sources a { color: #0097A7; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: linear-gradient(135deg, #0097A7 0%, #00C1CF 60%, #8D6DC4 100%);
+      padding: 28px 36px;
+      text-align: center;
+    }
+    .footer .footer-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .footer .footer-logo span { color: rgba(255,255,255,0.65); font-weight: 400; }
+    .footer p {
+      margin: 0 0 8px 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.6;
+    }
+    .footer .footer-links {
+      margin: 12px 0 8px 0;
+    }
+    .footer .footer-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 1px;
+    }
+    .footer .disclaimer {
+      margin-top: 12px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.50);
+    }
+
+    /* ===== FUN CALLOUT ===== */
+    .fun-callout {
+      margin: 0 36px 24px 36px;
+      background: linear-gradient(135deg, #E0F7FA 0%, #EDE7F6 100%);
+      border-radius: 10px;
+      padding: 16px 20px;
+      text-align: center;
+      border: 1px solid #B2EBF2;
+    }
+    .fun-callout p {
+      margin: 0;
+      font-size: 14px;
+      color: #0097A7;
+      font-weight: 600;
+    }
+    .fun-callout .fun-emoji { font-size: 22px; }
   </style>
 </head>
 <body>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f4f4f4">
-    <tr>
-      <td align="center" valign="top" style="padding: 24px 0;">
-        <div class="wrapper">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EAEFF2">
+  <tr>
+    <td align="center" valign="top" style="padding: 24px 12px;">
+      <div class="wrapper">
 
-          <!-- HEADER -->
-          <div class="header">
-            <div class="header-logo">Microsoft Copilot</div>
-            <h1>Copilot Updates</h1>
-            <div class="edition-badge">Edition 001</div>
-            <div class="date">March 17, 2026</div>
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+          <div class="header-top">
+            <div class="header-brand">Dental Crafters Network</div>
+            <div class="header-edition">Edition 001</div>
           </div>
-
-          <!-- INTRO -->
-          <div class="intro">
-            <p>Welcome to the very first edition of <strong>Copilot Updates</strong>! Each edition, we highlight the top new features in Microsoft Copilot for Windows, share a cool tip or trick, and keep you up to date on what's new for mobile. Everything here is based on officially confirmed Microsoft releases — no rumors, just real features you can use today.</p>
+          <div class="header-main">
+            <div class="newsletter-name">DCN Tech Corner</div>
+            <h1>Your Copilot Update &#129302;</h1>
+            <div class="tagline">The latest Microsoft Copilot features — made simple for your team</div>
+            <div class="date-pill">&#128197; March 17, 2026</div>
           </div>
-
-          <!-- TOP FEATURES HEADER -->
-          <div class="section-header">
-            <h2>&#127775; Top New Features in Copilot for Windows</h2>
-          </div>
-
-          <!-- FEATURE 1 -->
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-number">Feature 1 of 2</div>
-              <h3>Edit Documents by Default with Copilot in Word</h3>
-            </div>
-            <div class="feature-card-body">
-              <div class="label">What It Is</div>
-              <p>Copilot in Word can now <strong>directly edit your documents</strong> through the chat pane. You no longer need to switch modes or tools — Copilot is ready to make changes the moment you ask. Every change is fully reviewable and reversible, so you stay in control.</p>
-
-              <div class="label">Why It's Useful</div>
-              <p>Opening a blank page is often the hardest part. Now, just open Word, type a prompt, and Copilot will start writing and editing for you automatically. You can keep iterating in a continuous AI-assisted flow without breaking your concentration.</p>
-
-              <div class="steps">
-                <div class="steps-title">Step-by-Step Instructions</div>
-                <ol>
-                  <li>Open <strong>Microsoft Word</strong> and create a new blank document or open an existing one.</li>
-                  <li>Click the <strong>Copilot icon</strong> in the ribbon or look for the prompt box in the document.</li>
-                  <li>Type a prompt, for example: <em>"Draft a project proposal for a new marketing campaign."</em></li>
-                  <li>Copilot will generate the text and <strong>directly insert it</strong> into your document.</li>
-                  <li>Review the changes. You can <strong>accept, reject, or refine</strong> specific sections by asking Copilot to adjust them.</li>
-                </ol>
-              </div>
-
-              <div class="img-placeholder">
-                &#128247; Screenshot: Copilot directly editing a Word document with the review/accept toolbar visible
-              </div>
-            </div>
-          </div>
-
-          <!-- FEATURE 2 -->
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-number">Feature 2 of 2</div>
-              <h3>Copilot is Now Agentic in PowerPoint</h3>
-            </div>
-            <div class="feature-card-body">
-              <div class="label">What It Is</div>
-              <p>Copilot is now your personal <strong>PowerPoint presentation assistant</strong>. You can create, edit, and refine entire presentations through natural conversation. Copilot generates slides, updates content, improves layouts, and polishes designs — all while preserving your formatting, structure, and branding.</p>
-
-              <div class="label">Why It's Useful</div>
-              <p>No more tedious formatting or layout adjustments. Just tell Copilot what you want — like <em>"shorten this to five slides"</em> or <em>"make the tone more professional"</em> — and it handles the rest. It can even pull context from your files, meetings, and emails to shape the content.</p>
-
-              <div class="steps">
-                <div class="steps-title">Step-by-Step Instructions</div>
-                <ol>
-                  <li>Open <strong>PowerPoint</strong> and start a new presentation or open an existing one.</li>
-                  <li>Click the <strong>Copilot icon</strong> in the ribbon to open the chat pane.</li>
-                  <li>Type a request, such as: <em>"Create a 5-slide presentation based on my recent marketing plan document."</em></li>
-                  <li>Once slides are generated, ask Copilot to make specific edits, like: <em>"Change slide 3 to include a comparison table."</em></li>
-                  <li>Review the updated slides and <strong>finalize your presentation</strong>.</li>
-                </ol>
-              </div>
-
-              <div class="img-placeholder">
-                &#128247; Screenshot: Copilot chat pane in PowerPoint showing a prompt to adjust slide layout
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <!-- COOL TIP -->
-          <div class="section-header">
-            <h2>&#128161; Cool Tip or Trick</h2>
-          </div>
-
-          <div class="tip-card">
-            <div class="tip-label">&#9889; Pro Tip</div>
-            <h3>Search for Meetings by Organizer Using Copilot Chat</h3>
-
-            <div class="label">What It Is</div>
-            <p>Did you know you can ask Copilot Chat to instantly find meetings on your calendar organized by a specific person? No more scrolling endlessly through Outlook — just ask Copilot!</p>
-
-            <div class="label">Why It's Useful</div>
-            <p>Need to prepare for a 1-on-1 or review action items from past meetings with your manager or a colleague? This trick helps you locate those calendar items and prioritize your day in seconds.</p>
-
-            <div class="steps" style="background-color: #fffde7; border-color: #ffc107;">
-              <div class="steps-title" style="color: #856404;">Step-by-Step Instructions</div>
-              <ol>
-                <li>Open <strong>Copilot Chat</strong> on your Windows PC.</li>
-                <li>Type a prompt like: <em>"Find meetings organized by Alex Johnson next week."</em></li>
-                <li>Or ask for summaries: <em>"Summarize action items from the last 3 meetings organized by Sarah Davis."</em></li>
-                <li>Copilot will instantly retrieve the relevant calendar events and provide the information you requested.</li>
-              </ol>
-            </div>
-
-            <div class="img-placeholder" style="background-color: #fff8e1; border-color: #ffc107; color: #856404; margin-top: 16px;">
-              &#128247; Screenshot: Copilot Chat displaying a list of meetings organized by a specific colleague
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <!-- NOW ON MOBILE -->
-          <div class="section-header">
-            <h2>&#128241; Now on Mobile</h2>
-          </div>
-
-          <div class="mobile-card">
-            <div class="mobile-label">&#128241; Mobile Feature</div>
-            <h3>Copilot Home &amp; Lock Screen Widgets</h3>
-
-            <span class="platform-badge ios-badge">&#63743; iOS</span>
-            <span class="platform-badge android-badge">&#129513; Android</span>
-
-            <div class="label">What It Is</div>
-            <p>Microsoft has introduced new <strong>Copilot widgets</strong> for both iOS and Android home and lock screens, plus a dedicated <strong>Action Button</strong> for supported iPhones. With just one tap, you can start a chat, activate a voice conversation, or open your camera to attach a photo to Copilot Chat — all without opening the app.</p>
-
-            <div class="label">Why It's Useful</div>
-            <p>When you're on the go, you don't always have time to open an app and navigate through menus. The widget puts Copilot one tap away from anywhere on your phone.</p>
-
-            <div class="steps" style="background-color: #f1f8e9; border-color: #66bb6a;">
-              <div class="steps-title" style="color: #2e7d32;">iOS Instructions</div>
-              <ol>
-                <li>Long-press on your <strong>Home Screen</strong> or <strong>Lock Screen</strong>.</li>
-                <li>Tap the <strong>"+"</strong> icon in the top-left corner.</li>
-                <li>Search for <strong>"Copilot"</strong> and select your preferred widget size.</li>
-                <li>Drag it onto your screen and tap <strong>Done</strong>.</li>
-                <li><em>Bonus:</em> On supported iPhone models, go to <strong>Settings &gt; Action Button</strong> and assign it to launch Copilot.</li>
-              </ol>
-            </div>
-
-            <div style="height: 12px;"></div>
-
-            <div class="steps" style="background-color: #f1f8e9; border-color: #66bb6a;">
-              <div class="steps-title" style="color: #2e7d32;">Android Instructions</div>
-              <ol>
-                <li>Long-press on an <strong>empty space</strong> on your Home Screen.</li>
-                <li>Select <strong>"Widgets"</strong> from the menu that appears.</li>
-                <li>Scroll down to find <strong>"Copilot"</strong> in the widget list.</li>
-                <li>Drag your preferred widget onto the home screen.</li>
-                <li>Tap the widget to instantly start a chat, voice conversation, or visual search.</li>
-              </ol>
-            </div>
-
-            <div class="img-placeholder" style="background-color: #f1f8e9; border-color: #43a047; color: #2e7d32; margin-top: 16px;">
-              &#128247; Screenshot: Copilot widget shown on an iOS home screen (left) and Android home screen (right)
-            </div>
-          </div>
-
-          <!-- SOURCES -->
-          <div class="sources">
-            <h4>Sources</h4>
-            <p>
-              [1] Microsoft Tech Community — <a href="https://techcommunity.microsoft.com/blog/microsoft365copilotblog/what%E2%80%99s-new-in-microsoft-365-copilot--february-2026/4496489">What's New in Microsoft 365 Copilot | February 2026</a><br/>
-              [2] Microsoft Learn — <a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes?tabs=windows">Release Notes for Microsoft 365 Copilot</a>
-            </p>
-          </div>
-
-          <!-- FOOTER -->
-          <div class="footer">
-            <p><strong style="color:#ffffff;">Copilot Updates</strong> is an internal newsletter for Microsoft Copilot users.</p>
-            <p>All features confirmed via official Microsoft sources only.</p>
-            <div class="footer-links">
-              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/">Copilot Blog</a> |
-              <a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes">Release Notes</a> |
-              <a href="https://www.microsoft.com/en-us/microsoft-365/roadmap">Roadmap</a>
-            </div>
-            <div class="disclaimer">This newsletter is generated from official Microsoft documentation. Content is subject to change as features roll out.</div>
-          </div>
-
         </div>
-      </td>
-    </tr>
-  </table>
+
+        <!-- Wave -->
+        <div class="wave">
+          <svg viewBox="0 0 680 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100%" height="40">
+            <path d="M0,20 C170,50 510,-10 680,20 L680,40 L0,40 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+
+        <!-- ===== INTRO ===== -->
+        <div class="intro">
+          <p>Hey DCN team! &#128075; Welcome to the very first edition of <strong>DCN Tech Corner</strong> — your monthly dose of the coolest new Microsoft Copilot features, tips, and tricks. We keep it short, practical, and jargon-free so you can start using these features right away. Let's dive in! &#127939;</p>
+        </div>
+
+        <!-- ===== FUN CALLOUT ===== -->
+        <div class="fun-callout" style="margin-top: 24px;">
+          <p><span class="fun-emoji">&#9989;</span> &nbsp;All features in this newsletter are <strong>officially confirmed</strong> by Microsoft — no rumors, no guesswork. Just real tools you can use today.</p>
+        </div>
+
+        <!-- ===== TOP FEATURES HEADER ===== -->
+        <div class="section-header">
+          <h2><span class="icon">&#11088;</span> Top New Features for Windows</h2>
+        </div>
+        <div class="section-underline"></div>
+
+        <!-- ===== FEATURE 1 ===== -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-number">&#127381; Feature 1 of 2</div>
+            <h3>Copilot Now Edits Your Word Docs Directly!</h3>
+          </div>
+          <div class="feature-card-body">
+
+            <div class="label">&#128161; What's New?</div>
+            <p>Forget copy-paste and back-and-forth. Copilot in Word can now <strong>edit your document directly</strong> from the chat pane — just describe what you want and watch it happen. Every change is fully reversible, so there's zero risk of losing your work.</p>
+
+            <!-- Screenshot 1 -->
+            <div class="screenshot">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Microsoft Word — Copilot Chat Pane</span>
+              </div>
+              <div class="screenshot-content">
+                <div class="ss-icon">&#128196;</div>
+                <div class="ss-label">Screenshot: Copilot chat pane open in Word, showing a prompt being typed</div>
+                <div class="ss-sub">Replace with actual screenshot from your Word app</div>
+              </div>
+            </div>
+
+            <div class="label">&#127775; Why You'll Love It</div>
+            <p>Staring at a blank page? Just open Word, type a prompt like <em>"Write a welcome letter for a new patient"</em> and Copilot will draft it for you — right inside the document. No mode switching, no fuss.</p>
+
+            <div class="steps-box">
+              <div class="steps-title">&#128203; How To Use It — Step by Step</div>
+              <ol>
+                <li>Open <strong>Microsoft Word</strong> and create a new document (or open an existing one).</li>
+                <li>Click the <strong>Copilot icon</strong> in the ribbon at the top of the screen.</li>
+                <li>Type your request in the chat box — for example: <code>"Draft a project update for our team."</code></li>
+                <li>Copilot will write the text and <strong>insert it directly</strong> into your document.</li>
+                <li>Review the result — use the <strong>Accept</strong> or <strong>Discard</strong> buttons, or ask Copilot to refine it further.</li>
+              </ol>
+            </div>
+
+            <!-- Screenshot 2 -->
+            <div class="screenshot">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Microsoft Word — Copilot Editing in Action</span>
+              </div>
+              <div class="screenshot-content">
+                <div class="ss-icon">&#9999;&#65039;</div>
+                <div class="ss-label">Screenshot: Word document with Copilot-generated text and the Accept/Discard toolbar visible</div>
+                <div class="ss-sub">Replace with actual screenshot showing the review toolbar</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===== FEATURE 2 ===== -->
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-number">&#127381; Feature 2 of 2</div>
+            <h3>PowerPoint Just Got a Whole Lot Smarter &#127775;</h3>
+          </div>
+          <div class="feature-card-body">
+
+            <div class="label">&#128161; What's New?</div>
+            <p>Copilot is now your personal <strong>PowerPoint presentation assistant</strong>. You can build, edit, and polish entire slide decks just by chatting with it. It can generate slides, fix layouts, adjust the tone, and even pull in content from your emails and files.</p>
+
+            <!-- Screenshot 3 -->
+            <div class="screenshot">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Microsoft PowerPoint — Copilot Chat Pane</span>
+              </div>
+              <div class="screenshot-content">
+                <div class="ss-icon">&#127912;</div>
+                <div class="ss-label">Screenshot: PowerPoint open with the Copilot pane on the right side, showing a slide creation prompt</div>
+                <div class="ss-sub">Replace with actual screenshot from your PowerPoint app</div>
+              </div>
+            </div>
+
+            <div class="label">&#127775; Why You'll Love It</div>
+            <p>No more spending an hour formatting slides. Just tell Copilot what you need — <em>"Make a 5-slide summary of our Q1 results"</em> — and it builds the deck for you. You can then ask it to tweak the design, shorten a slide, or change the tone. It's like having a presentation designer on call 24/7!</p>
+
+            <div class="steps-box">
+              <div class="steps-title">&#128203; How To Use It — Step by Step</div>
+              <ol>
+                <li>Open <strong>Microsoft PowerPoint</strong> and start a new presentation or open an existing one.</li>
+                <li>Click the <strong>Copilot icon</strong> in the ribbon to open the chat pane on the right.</li>
+                <li>Type a request, such as: <code>"Create a 5-slide presentation about our new patient onboarding process."</code></li>
+                <li>Copilot will generate the slides automatically — review them and ask for any changes.</li>
+                <li>Try follow-up prompts like: <code>"Make slide 3 shorter"</code> or <code>"Change the tone to be more friendly."</code></li>
+              </ol>
+            </div>
+
+            <!-- Screenshot 4 -->
+            <div class="screenshot">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Microsoft PowerPoint — Generated Slides Preview</span>
+              </div>
+              <div class="screenshot-content">
+                <div class="ss-icon">&#128250;</div>
+                <div class="ss-label">Screenshot: PowerPoint showing the AI-generated slide deck with multiple slides in the panel</div>
+                <div class="ss-sub">Replace with actual screenshot of the generated presentation</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ===== COOL TIP HEADER ===== -->
+        <div class="section-header">
+          <h2><span class="icon">&#128161;</span> Cool Tip of the Month</h2>
+        </div>
+        <div class="section-underline"></div>
+
+        <!-- ===== TIP CARD ===== -->
+        <div class="tip-card">
+          <div class="tip-card-header">
+            <div class="tip-emoji">&#9889;</div>
+            <div class="tip-card-header-text">
+              <div class="tip-label">Pro Tip — Works in Copilot Chat</div>
+              <h3>Find Any Meeting in Seconds by Organizer!</h3>
+            </div>
+          </div>
+          <div class="tip-card-body">
+
+            <div class="tip-label-inline">&#128161; The Trick</div>
+            <p>Did you know you can ask Copilot Chat to <strong>instantly find meetings on your calendar</strong> organized by a specific person? No more scrolling through Outlook for 10 minutes — just ask and you'll have the answer in seconds!</p>
+
+            <!-- Screenshot 5 -->
+            <div class="screenshot-purple">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Copilot Chat — Calendar Search</span>
+              </div>
+              <div class="screenshot-content" style="background: #FAF8FF;">
+                <div class="ss-icon">&#128197;</div>
+                <div class="ss-label" style="color: #7B5EA7;">Screenshot: Copilot Chat window showing a calendar query and the list of meetings returned</div>
+                <div class="ss-sub">Replace with actual screenshot of the Copilot Chat response</div>
+              </div>
+            </div>
+
+            <div class="tip-label-inline">&#128640; Try These Prompts</div>
+            <p>Copy and paste one of these directly into Copilot Chat to try it out right now:</p>
+
+            <div class="steps-box-purple">
+              <div class="steps-title">&#128203; Step by Step</div>
+              <ol>
+                <li>Open <strong>Copilot Chat</strong> on your Windows PC (look for the Copilot icon in the taskbar or Start menu).</li>
+                <li>Type a prompt like: <code>"Find meetings organized by [Name] next week."</code></li>
+                <li>Or ask for a summary: <code>"Summarize action items from the last 3 meetings organized by [Name]."</code></li>
+                <li>Copilot will instantly pull up the relevant calendar events — no manual searching needed!</li>
+              </ol>
+            </div>
+
+            <!-- Screenshot 6 -->
+            <div class="screenshot-purple">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Copilot Chat — Meeting Summary Results</span>
+              </div>
+              <div class="screenshot-content" style="background: #FAF8FF;">
+                <div class="ss-icon">&#128203;</div>
+                <div class="ss-label" style="color: #7B5EA7;">Screenshot: Copilot Chat showing a summarized list of action items from recent meetings</div>
+                <div class="ss-sub">Replace with actual screenshot of the meeting summary output</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ===== MOBILE HEADER ===== -->
+        <div class="section-header">
+          <h2><span class="icon">&#128241;</span> Now on Mobile</h2>
+        </div>
+        <div class="section-underline"></div>
+
+        <!-- ===== MOBILE CARD ===== -->
+        <div class="mobile-card">
+          <div class="mobile-card-header">
+            <div class="mobile-emoji">&#128241;</div>
+            <div class="mobile-card-header-text">
+              <div class="mobile-label-top">iOS &amp; Android</div>
+              <h3>Copilot is Now on Your Home Screen!</h3>
+            </div>
+          </div>
+          <div class="mobile-card-body">
+
+            <div class="mobile-label-inline">&#128161; What's New</div>
+            <p>Microsoft has launched new <strong>Copilot home screen and lock screen widgets</strong> for both iPhone and Android phones! Plus, iPhone users on supported models can now set their <strong>Action Button</strong> to launch Copilot instantly. One tap and you're chatting with AI — no unlocking, no searching for the app!</p>
+
+            <div class="platform-row">
+              <span class="platform-badge ios-badge">&#63743; iPhone (iOS)</span>
+              <span class="platform-badge android-badge">&#129513; Android</span>
+            </div>
+
+            <!-- Screenshot 7 -->
+            <div class="screenshot-red">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Mobile — Copilot Home Screen Widget</span>
+              </div>
+              <div class="screenshot-content" style="background: #FFF8F7;">
+                <div class="ss-icon">&#128241;</div>
+                <div class="ss-label" style="color: #B03A2E;">Screenshot: iPhone home screen showing the Copilot widget next to an Android home screen with the same widget</div>
+                <div class="ss-sub">Replace with actual screenshots from iOS and Android devices</div>
+              </div>
+            </div>
+
+            <div class="steps-box-red">
+              <div class="steps-title">&#63743; iPhone Setup — Step by Step</div>
+              <ol>
+                <li>Long-press on an empty area of your <strong>Home Screen</strong> until the icons start to jiggle.</li>
+                <li>Tap the <strong>"+"</strong> button in the top-left corner.</li>
+                <li>Search for <strong>"Copilot"</strong> in the widget search bar.</li>
+                <li>Select your preferred widget size and tap <strong>"Add Widget."</strong></li>
+                <li><strong>Bonus:</strong> Go to <strong>Settings &gt; Action Button</strong> (on supported iPhone models) and assign it to open Copilot.</li>
+              </ol>
+            </div>
+
+            <!-- Screenshot 8 -->
+            <div class="screenshot-red">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">iOS — Adding the Copilot Widget</span>
+              </div>
+              <div class="screenshot-content" style="background: #FFF8F7;">
+                <div class="ss-icon">&#10133;</div>
+                <div class="ss-label" style="color: #B03A2E;">Screenshot: iPhone widget picker showing the Copilot widget being selected and added to the home screen</div>
+                <div class="ss-sub">Replace with actual screenshot from the iOS widget picker</div>
+              </div>
+            </div>
+
+            <div class="steps-box-red">
+              <div class="steps-title">&#129513; Android Setup — Step by Step</div>
+              <ol>
+                <li>Long-press on an <strong>empty space</strong> on your Android home screen.</li>
+                <li>Tap <strong>"Widgets"</strong> from the menu that appears at the bottom.</li>
+                <li>Scroll through the list to find <strong>"Copilot."</strong></li>
+                <li>Long-press the widget and drag it to your preferred spot on the home screen.</li>
+                <li>Tap the widget to instantly start a chat, voice conversation, or visual search with Copilot!</li>
+              </ol>
+            </div>
+
+            <!-- Screenshot 9 -->
+            <div class="screenshot-red">
+              <div class="screenshot-bar">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="bar-title">Android — Adding the Copilot Widget</span>
+              </div>
+              <div class="screenshot-content" style="background: #FFF8F7;">
+                <div class="ss-icon">&#129513;</div>
+                <div class="ss-label" style="color: #B03A2E;">Screenshot: Android widget picker showing the Copilot widget being dragged onto the home screen</div>
+                <div class="ss-sub">Replace with actual screenshot from an Android device</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===== SOURCES ===== -->
+        <div class="sources">
+          <h4>Sources &amp; Further Reading</h4>
+          <p>
+            [1] Microsoft Tech Community — <a href="https://techcommunity.microsoft.com/blog/microsoft365copilotblog/what%E2%80%99s-new-in-microsoft-365-copilot--february-2026/4496489">What's New in Microsoft 365 Copilot | February 2026</a><br/>
+            [2] Microsoft Learn — <a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes?tabs=windows">Release Notes for Microsoft 365 Copilot</a>
+          </p>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+          <div class="footer-logo">Dental Crafters <span>Network</span></div>
+          <p><strong style="color:#fff;">DCN Tech Corner</strong> — Your monthly Copilot update</p>
+          <p>All features sourced exclusively from official Microsoft documentation.</p>
+          <div class="footer-links">
+            <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/">Copilot Blog</a>
+            <a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes">Release Notes</a>
+            <a href="https://www.microsoft.com/en-us/microsoft-365/roadmap">Roadmap</a>
+            <a href="https://www.dentalcraftersnetwork.com">DCN Website</a>
+          </div>
+          <div class="disclaimer">This newsletter is an internal DCN communication. Content reflects officially released Microsoft features and is subject to change as rollouts continue.</div>
+        </div>
+
+      </div>
+    </td>
+  </tr>
+</table>
 </body>
 </html>
