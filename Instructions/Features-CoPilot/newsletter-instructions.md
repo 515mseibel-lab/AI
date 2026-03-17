@@ -27,6 +27,22 @@ Newsletters/CoPilot/edition-002.md
 | Edition Number | Three-digit zero-padded integer | `001`, `002`, `003` |
 | Extension | `.md` (Markdown) | `.md` |
 
+## Approved Data Sources
+
+To ensure accuracy and reliability, **only** use the following official Microsoft sources to gather information about new features, tips, and tricks. Do not use unverified third-party blogs, rumors, or speculative sources.
+
+1. **Microsoft Copilot Blog**
+   - Homepage: [https://www.microsoft.com/en-us/microsoft-copilot/blog/](https://www.microsoft.com/en-us/microsoft-copilot/blog/)
+   - Release Notes: [https://www.microsoft.com/en-us/microsoft-copilot/blog/content-type/release-notes/](https://www.microsoft.com/en-us/microsoft-copilot/blog/content-type/release-notes/)
+2. **Microsoft 365 Copilot Blog (Tech Community)**
+   - [https://techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog](https://techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog)
+3. **Microsoft 365 Roadmap**
+   - [https://www.microsoft.com/en-us/microsoft-365/roadmap](https://www.microsoft.com/en-us/microsoft-365/roadmap)
+4. **Microsoft Learn - Copilot Release Notes**
+   - [https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes](https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes)
+5. **Windows Experience Blog** (For Windows-specific Copilot features)
+   - [https://blogs.windows.com/windowsexperience/](https://blogs.windows.com/windowsexperience/)
+
 ## Content Requirements
 
 The newsletter must be formatted as an easy-to-read artifact suitable for emailing to basic users. It should focus primarily on **Copilot for Windows**, with a secondary section for mobile platforms.
