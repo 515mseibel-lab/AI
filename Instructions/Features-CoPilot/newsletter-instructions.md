@@ -11,12 +11,17 @@ This document contains the complete instructions, requirements, and process for 
 
 ## 2. Newsletter Structure (5 Sections)
 
-Each edition must contain exactly 5 content items, prioritized as follows:
+Each edition must contain exactly 5 content items. **Crucially, you must prioritize content in this specific order:**
+1. **Copilot Chat** features (highest priority)
+2. **Copilot Pages / CoWork** features (when available)
+3. **App-specific** features (Word, Excel, PowerPoint, Outlook, etc.)
+
+The 5 sections should be structured as follows:
 
 1.  **💬 Copilot Chat Feature 1:** A high-profile new feature specifically for Microsoft 365 Copilot Chat (web or Teams).
-2.  **💬 Copilot Chat Feature 2:** Another new feature or advanced capability for Copilot Chat.
+2.  **💬 Copilot Chat Feature 2 (or Copilot Pages):** Another new feature for Copilot Chat, or a feature for Copilot Pages/CoWork (if available).
 3.  **🆕 Also New in Microsoft 365:** A new Copilot feature integrated into a specific M365 app (e.g., Outlook, Word, PowerPoint).
-4.  **💡 Cool Tip of the Month:** A lesser-known tip, trick, or prompt that users can try right away.
+4.  **💡 Cool Tip of the Month:** A lesser-known tip, trick, or prompt that users can try right away (prioritize Copilot Chat tips).
 5.  **📱 Now on Mobile:** A feature or tip specific to the Microsoft 365 or Copilot mobile apps (must include both iOS and Android instructions if applicable).
 
 ## 3. Content Format for Each Section
@@ -32,8 +37,9 @@ Every section must include:
 
 ## 4. Image Guidelines
 
+*   **Correct Branding:** All images, whether real or AI-generated, MUST feature the correct **Microsoft 365 Copilot icon** (the colorful ribbon/swirl logo), NOT the consumer Copilot icon (the butterfly/origami logo).
 *   **Real Screenshots First:** Always attempt to source real product screenshots from official Microsoft blogs or documentation.
-*   **AI Generation as Fallback:** If a real screenshot cannot be found, generate a clean, realistic UI illustration using AI.
+*   **AI Generation as Fallback:** If a real screenshot cannot be found, generate a clean, realistic UI illustration using AI, ensuring the M365 Copilot icon is prominently displayed.
 *   **Embedding:** All images MUST be converted to base64 and embedded directly into the final HTML file so the newsletter functions as a standalone artifact that can be emailed without broken image links.
 
 ## 5. Approved Official Sources
